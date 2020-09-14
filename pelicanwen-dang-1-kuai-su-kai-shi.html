@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Pelican文档（1）——快速开始</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="这是Pelican英文文档中文翻译的第一部分。" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Dancer</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li class="active"><a href="/category/document.html">Document</a></li>
+                    <li><a href="/category/review.html">Review</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pelicanwen-dang-1-kuai-su-kai-shi.html" rel="bookmark"
+           title="Permalink to Pelican文档（1）——快速开始">Pelican文档（1）——快速开始</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-09-14T10:20:00+08:00">
+                Published: 周一 14 九月 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/sunhao.html">SunHao</a>
+        </address>
+<p>In <a href="/category/document.html">Document</a>.</p>
+<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/document.html">document</a> </p>
+</footer><!-- /.post-info -->      <p>我们强烈建议通读所有的文档，但是对实在没有耐心的人，接下来是一些快速开始的步骤。</p>
+<h1>安装</h1>
+<p>在Python 3.6+版本中安装Pelican（如果需要也可以选择同时安装Markdown）可以通过在逆喜爱的终端里运行以下命令，有可能需要<code>sodo</code>给与权限：
+<code>python -m pip install "pelican[markdown]</code></p>
+<h1>创建一个项目</h1>
+<p>首先给你的项目选择一个名称，并为你的站点创建一个命名合适的目录，然后跳转到这个目录：
+    mkdir -p ~/projects/yoursite
+    cd ~/projects/yoursite
+通过<code>pelican-quickstart</code>命令创建一个框架程序，这一命题的运行方式是询问一些关于你的站点的问题：
+<code>pelican-quickstart</code>
+那些有默认值的问题都将默认值标记在了括号里，你可以自由地选择用敲击回车键的方式接受这些默认值。当想你询问URL前缀时，请键入你的域名（例如<code>https://example.com</code>）。</p>
+<h1>创建一篇文章</h1>
+<p>在你创建一些内容之前Pelican是无法运行的。有你喜爱的文本编辑器按一下的内容创建你的第一篇文章：
+    Title: My First Review
+    Date: 2010-12-03 10:00
+    Category: Review</p>
+<div class="highlight"><pre><span></span><span class="err">Following is a review of my favorite mechanical keyboard.</span>
+</pre></div>
+
+
+<p>给予这篇示例文章Markdown的格式，并且保存为<code>~/prjects/yoursite/content/keyboard-review.md</code></p>
+<h1>生成你的站点</h1>
+<p>在你的站点的根目录下运行<code>pelican</code>命令来生成你的站点：
+<code>pelican content</code>
+你的站点现在已经在<code>output</code>目录下生成了。（你也许会看到一个和反馈有关的警告，但是这是在本地运行时的正常现象，并且可以暂时忽略。）</p>
+<h1>预览你的站点</h1>
+<p>打开一个新的终端，进入你的项目的根目录，运行以下命令启动Pelican的web服务器：
+<code>pelican --listen</code>
+用你的浏览器访问http://localhost:8000/ 来预览你的站点。</p>
+<p>继续阅读文档的其他章节可以获得更多细节，并且浏览Pelican wiki的指导页面可以获取社区中的相关教程。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
