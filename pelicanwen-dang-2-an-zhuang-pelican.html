@@ -42,24 +42,35 @@
 <p><code>python -m pip install "pelican[markdown]"</code></p>
 <p>（注意有些操作系统会要求你在上述命令前加上<code>sudo</code>前缀以为整个系统安装Pelican。）</p>
 <p>尽管以上是最简单的方式，我们最推荐的方式是在安装Pelican之前用<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>为Pelican创建一个虚拟环境。假设你已经安装了<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>，你可以打开一个新的终端并且为Pelican创建一个虚拟环境：</p>
-<p>```virtualenv ~/virtualenvs/pelican
-cd ~/virtualenvs/pelican
-source bin/activate</p>
-<div class="highlight"><pre><span></span><span class="err">一旦虚拟环境被创建并激活，</span><span class="n">Pelican可以通过上述</span><span class="o">`</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span><span class="o">`</span><span class="err">命令安装。如果你有项目的源代码，你也可以选择用</span><span class="n">distutils方法安装Pelican</span><span class="err">：</span>
+<div class="highlight"><pre><span></span><span class="err">virtualenv ~/virtualenvs/pelican</span>
+<span class="err">cd ~/virtualenvs/pelican</span>
+<span class="err">source bin/activate</span>
+</pre></div>
 
-<span class="o">```</span><span class="n">cd</span> <span class="n">path</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="n">Pelican</span><span class="o">-</span><span class="k">source</span>
-<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+
+<p>一旦虚拟环境被创建并激活，Pelican可以通过上述<code>python -m pip install pelican</code>命令安装。如果你有项目的源代码，你也可以选择用distutils方法安装Pelican：</p>
+<div class="highlight"><pre><span></span><span class="err">cd path-to-Pelican-source</span>
+<span class="err">python setup.py install</span>
 </pre></div>
 
 
 <p>如果你安装了Git并且比起稳定发行版你更想要安装最新但不稳定的版本，使用以下命令：</p>
-<p><code>python -m pip install -e "git+https://github.com/getpelican/pelican.git#egg=pelican"</code></p>
-<p>一旦Pelican安装完成，你可以运行<code>pelican --help</code>查看基本用法。更多的细节可以查阅<a href="">发布</a>章节。</p>
+<div class="highlight"><pre><span></span><span class="err">python -m pip install -e &quot;git+https://github.com/getpelican/pelican.git#egg=pelican&quot;</span>
+</pre></div>
+
+
+<p>一旦Pelican安装完成，你可以运行<code>pelican --help</code>查看基本用法。更多的细节可以查阅<a href="https://docs.getpelican.com/en/stable/publish.html">发布</a>章节。</p>
 <h1>可选的包</h1>
 <p>如果你计划用<a href="https://pypi.org/project/Markdown/">Markdown</a>作为标记格式，你可以安装支持Markdown的Pelican版本：</p>
-<p><code>python -m pip install "pelican[markdwon]"</code></p>
+<div class="highlight"><pre><span></span><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="ss">&quot;pelican[markdwon]&quot;</span><span class="w"></span>
+</pre></div>
+
+
 <p>你可以在设置文件里开启印刷增强，但首先你要安装<a href="https://pypi.org/project/typogrify/">Typogrify</a>库：</p>
-<p><code>python -m pip install typogrify</code></p>
+<div class="highlight"><pre><span></span><span class="err">python -m pip install typogrify</span>
+</pre></div>
+
+
 <h1>依赖关系</h1>
 <p>当Pelican安装完成时，下面的相关Python包就已经在不需要你参与的情况下自动安装了：
 * feedgenerator, to generate the Atom feeds
@@ -73,9 +84,15 @@ source bin/activate</p>
 * python-dateutil, to read the date metadata</p>
 <h1>快速建立你的站点</h1>
 <p>一旦Pelican安装完成，你可以通过<code>pelican-quickstart</code>命令创建一个框架项目，这一命令在运行时会向你询问一些关于你的站点的问题：</p>
-<p><code>pelican-quickstart</code></p>
+<div class="highlight"><pre><span></span><span class="err">pelican-quickstart</span>
+</pre></div>
+
+
 <p>如果在激活的虚拟环境中运行，<code>pelican-quickstart</code>将会在<code>$VIRTUAL_ENV/.project</code>中寻找一个关联项目路径。如果那个文件存在并包含一个有效的目录路径，新的Pelican项目将会被保存在那个位置。否则默认保存在当前的工作目录。在初次调用时指定新项目路径可以使用：</p>
-<p><code>pelican-quickstart --path /your/desired/directory</code></p>
+<div class="highlight"><pre><span></span><span class="err">pelican-quickstart --path /your/desired/directory</span>
+</pre></div>
+
+
 <p>一旦你回答完所有问题，你的项目将会按照以下的结构组成（除了<em>pages</em>——在下面的圆括号里——如果你计划创建不依赖时序的内容可以自己添加。）：</p>
 <div class="highlight"><pre><span></span><span class="err">yourproject</span>
 <span class="err">├─content</span>
