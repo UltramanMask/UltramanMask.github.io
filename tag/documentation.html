@@ -18,7 +18,84 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/pelicanwen-dang-1-kuai-su-kai-shi.html">Pelican文档（1）——快速开始</a></h1>
+                    <h1 class="entry-title"><a href="/pelicanwen-dang-2-an-zhuang-pelican.html">Pelican文档（2）——安装Pelican</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2020-09-15T14:20:00+08:00">
+                Published: 周二 15 九月 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/sunhao.html">SunHao</a>
+        </address>
+<p>In <a href="/category/documentation.html">Documentation</a>.</p>
+<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/documentation.html">documentation</a> </p>
+</footer><!-- /.post-info --><p>Pelican在Python3.6+上运行效果最好，更早版本的Python已经不被支持。</p>
+<p>你可以通过几种不同的方式安装Pelican。最简单的方式是<a href="https://pip.pypa.io/en/stable/">pip</a>：</p>
+<p><code>python -m pip install pelican</code></p>
+<p>或者如果你计划使用Markdown：</p>
+<p><code>python -m pip install "pelican[markdown]"</code></p>
+<p>（注意有些操作系统会要求你在上述命令前加上<code>sudo</code>前缀以为整个系统安装Pelican。）</p>
+<p>尽管以上是最简单的方式，我们最推荐的方式是在安装Pelican之前用<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>为Pelican创建一个虚拟环境。假设你已经安装了<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a>，你可以打开一个新的终端并且为Pelican创建一个虚拟环境：</p>
+<p>```virtualenv ~/virtualenvs/pelican
+cd ~/virtualenvs/pelican
+source bin/activate</p>
+<div class="highlight"><pre><span></span><span class="err">一旦虚拟环境被创建并激活，</span><span class="n">Pelican可以通过上述</span><span class="o">`</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span><span class="o">`</span><span class="err">命令安装。如果你有项目的源代码，你也可以选择用</span><span class="n">distutils方法安装Pelican</span><span class="err">：</span>
+
+<span class="o">```</span><span class="n">cd</span> <span class="n">path</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="n">Pelican</span><span class="o">-</span><span class="k">source</span>
+<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>如果你安装了Git并且比起稳定发行版你更想要安装最新但不稳定的版本，使用以下命令：</p>
+<p><code>python -m pip install -e "git+https://github.com/getpelican/pelican.git#egg=pelican"</code></p>
+<p>一旦Pelican安装完成，你可以运行<code>pelican --help</code>查看基本用法。更多的细节可以查阅<a href="">发布</a>章节。</p>
+<h1>可选的包</h1>
+<p>如果你计划用<a href="https://pypi.org/project/Markdown/">Markdown</a>作为标记格式，你可以安装支持Markdown的Pelican版本：</p>
+<p><code>python -m pip install "pelican[markdwon]"</code></p>
+<p>你可以在设置文件里开启印刷增强，但首先你要安装<a href="https://pypi.org/project/typogrify/">Typogrify</a>库：</p>
+<p><code>python -m pip install typogrify</code></p>
+<h1>依赖关系</h1>
+<p>当Pelican安装完成时，下面的相关Python包就已经在不需要你参与的情况下自动安装了：
+* feedgenerator, to generate the Atom feeds
+* jinja2, for templating support
+* pygments, for syntax highlighting
+* docutils, for supporting reStructuredText as an input format
+* pytz, for timezone definitions
+* blinker, an object-to-object and broadcast signaling system
+* unidecode, for ASCII transliterations of Unicode text utilities
+* MarkupSafe, for a markup-safe string implementation
+* python-dateutil, to read the date metadata</p>
+<h1>快速建立你的站点</h1>
+<p>一旦Pelican安装完成，你可以通过<code>pelican-quickstart</code>命令创建一个框架项目，这一命令在运行时会向你询问一些关于你的站点的问题：</p>
+<p><code>pelican-quickstart</code></p>
+<p>如果在激活的虚拟环境中运行，<code>pelican-quickstart</code>将会在<code>$VIRTUAL_ENV/.project</code>中寻找一个关联项目路径。如果那个文件存在并包含一个有效的目录路径，新的Pelican项目将会被保存在那个位置。否则默认保存在当前的工作目录。在初次调用时指定新项目路径可以使用：</p>
+<p><code>pelican-quickstart --path /your/desired/directory</code></p>
+<p>一旦你回答完所有问题，你的项目将会按照以下的结构组成（除了<em>pages</em>——在下面的圆括号里——如果你计划创建不依赖时序的内容可以自己添加。）：</p>
+<div class="highlight"><pre><span></span><span class="err">yourproject</span>
+<span class="err">├─content</span>
+<span class="err">│  └─(pages)</span>
+<span class="err">├─output</span>
+<span class="err">├─task.py</span>
+<span class="err">├─makefile</span>
+<span class="err">├─pelicanconf.py    #Main settings file</span>
+<span class="err">├─publishconf.py    #Settings to use when ready to publish</span>
+</pre></div>
+
+
+<p>下一步就是在已经为你创建的<em>content</em>文件夹里添加内容了。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/pelicanwen-dang-1-kuai-su-kai-shi.html" rel="bookmark"
+                           title="Permalink to Pelican文档（1）——快速开始">Pelican文档（1）——快速开始</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2020-09-14T10:20:00+08:00">
                 Published: 周一 14 九月 2020
@@ -29,50 +106,12 @@
         </address>
 <p>In <a href="/category/documentation.html">Documentation</a>.</p>
 <p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/documentation.html">documentation</a> </p>
-</footer><!-- /.post-info --><p>我们强烈建议通读所有的文档，但是对实在没有耐心的人，接下来是一些快速开始的步骤。</p>
-<h1>安装</h1>
-<p>在Python 3.6+版本中安装Pelican（如果需要也可以选择同时安装Markdown）可以通过在逆喜爱的终端里运行以下命令，有可能需要<code>sodo</code>给与权限：</p>
-<p><code>python -m pip install "pelican[markdown]"</code></p>
-<h1>创建一个项目</h1>
-<p>首先给你的项目选择一个名称，并为你的站点创建一个命名合适的目录，然后跳转到这个目录：</p>
-<div class="highlight"><pre><span></span><span class="err">mkdir -p ~/projects/yoursite</span>
-<span class="err">cd ~/projects/yoursite</span>
-</pre></div>
-
-
-<p>通过<code>pelican-quickstart</code>命令创建一个框架程序，这一命题的运行方式是询问一些关于你的站点的问题：</p>
-<div class="highlight"><pre><span></span><span class="err">pelican-quickstart</span>
-</pre></div>
-
-
-<p>那些有默认值的问题都将默认值标记在了括号里，你可以自由地选择用敲击回车键的方式接受这些默认值。当想你询问URL前缀时，请键入你的域名（例如<code>https://example.com</code>）。</p>
-<h1>创建一篇文章</h1>
-<p>在你创建一些内容之前Pelican是无法运行的。有你喜爱的文本编辑器按一下的内容创建你的第一篇文章：</p>
-<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Review</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">00</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Review</span>
-
-<span class="n">Following</span> <span class="k">is</span> <span class="n">a</span> <span class="n">review</span> <span class="n">of</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">mechanical</span> <span class="n">keyboard</span><span class="o">.</span>
-</pre></div>
-
-
-<p>给予这篇示例文章Markdown的格式，并且保存为<code>~/prjects/yoursite/content/keyboard-review.md</code></p>
-<h1>生成你的站点</h1>
-<p>在你的站点的根目录下运行<code>pelican</code>命令来生成你的站点：</p>
-<div class="highlight"><pre><span></span><span class="err">pelican content</span>
-</pre></div>
-
-
-<p>你的站点现在已经在<code>output</code>目录下生成了。（你也许会看到一个和反馈有关的警告，但是这是在本地运行时的正常现象，并且可以暂时忽略。）</p>
-<h1>预览你的站点</h1>
-<p>打开一个新的终端，进入你的项目的根目录，运行以下命令启动Pelican的web服务器：</p>
-<div class="highlight"><pre><span></span><span class="err">pelican --listen</span>
-</pre></div>
-
-
-<p>用你的浏览器访问http://localhost:8000/ 来预览你的站点。</p>
-<p>继续阅读文档的其他章节可以获得更多细节，并且浏览Pelican wiki的指导页面可以获取社区中的相关教程。</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>这是Pelican英文文档中文翻译的第一部分。</p>
+                <a class="readmore" href="/pelicanwen-dang-1-kuai-su-kai-shi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
