@@ -190,7 +190,7 @@
 <h2>相同文件夹内的混合内容</h2>
 <p>从Pelican3.5开始，静态文件可以安全地和页面源文件共享同一个目录，而不会把页面源文件暴露在生成的站点中。任意一个这样的目录都要同时被加入<code>STATIC_PATHS</code>和<code>PAGE_PATH</code>（或<code>STATIC_PATHS</code>和<code>ARTICLE_PATHS</code>）中。Pelican将会正常地识别和处理页面源文件，如果其他文件都在一个保存静态文件的单独目录内，Pelican会把剩余的文件复制到输出中。</p>
 <p>注意：把静态文件和内容源文件放在相同的源目录内并不能保证他们最终将会出现在生成的站点中的同一位置。做到这一点的最简单方法时用<code>{attach}</code>链接语法（下面会说）。除此之外，<code>STATIC_SAVE_AS</code>，<code>PAGE_SAVE_AS</code>和<code>ARTICLE_SAVE_AS</code>设置（和对应的<code>*_URL</code>设置）能够被用来设置将不同种类的文件保存在一起，就像他们在Pelican早期版本中的作用一样。</p>
-<h1>内部内容之间的链接</h1>
+<h2>内部内容之间的链接</h2>
 <p>从Pelican3.1开始，可以将站点内的链接在内容文件夹内进行链接，而不用在生成的站点的文件夹内进行链接。这使得我们从当前的投稿链接到另一个可能与之相关的投稿更加简单（不需要知道被链接的内容在被生成的站点内的位置）。</p>
 <p>为了链接内部的内容（<code>content</code>目录内的文件），可以使用下面的语法链接到目标文件：<code>{filename}path/to/file</code>。注意：用来分隔目录层级的反斜杠<code>/</code>在所有操作系统内都一样，包括Windows。</p>
 <p>比如说，一个Pelican项目可能具有如下的结构：</p>
