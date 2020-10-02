@@ -1,6 +1,6 @@
-Title: My
-Date: 2020-9-14 10:20
-Category: Review
+Title: About
+Date: 2020-9-14 11:20
+Category: About
 summary:this will
 
 外选课若需计入总学分，有以下要求：

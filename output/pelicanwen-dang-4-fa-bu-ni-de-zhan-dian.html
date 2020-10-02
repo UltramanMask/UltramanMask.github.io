@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Pelican文档（4）——发布你的站点</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="这是Pelican英文文档中文翻译的第一部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中是“笔记本”的意思。" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Do you want to dance,too?</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li class="active"><a href="/category/documentation.html">Documentation</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pelicanwen-dang-4-fa-bu-ni-de-zhan-dian.html" rel="bookmark"
+           title="Permalink to Pelican文档（4）——发布你的站点">Pelican文档（4）——发布你的站点</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-09-23T18:00:00+08:00">
+                Published: 周三 23 九月 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/sunhao.html">SunHao</a>
+        </address>
+<p>In <a href="/category/documentation.html">Documentation</a>.</p>
+<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/documentation.html">documentation</a> </p>
+</footer><!-- /.post-info -->      <h1>站点生成</h1>
+<p>一旦Pelican安装完成并且你拥有了一些内容（比如Markdown或reST格式的文件），你可以通过<code>pelican</code>命令将你的内容转化为HTML，你也可以指明你的内容的路径和（可选择地）你的设置文件的路径：</p>
+<div class="highlight"><pre><span></span><span class="err">pelican /path/to/your/content/ [-s path/to/your/settings.py]</span>
+</pre></div>
+
+
+<p>以上命令将会用默认的主题生成一个简单的站点并且将其保存在<code>output/</code>文件夹内。默认主题由不包含任何装饰的简单HTML组成，你可以以它为基础创建自己的主题。</p>
+<p>当处理单个文章或页面时，可以只生成这一内容对应的文件。为了做到这一点，使用<code>--write-selected</code>参数，比如说：</p>
+<div class="highlight"><pre><span></span><span class="err">pelican --write-selected output/posts/my-post-title.html</span>
+</pre></div>
+
+
+<p>注意你需要指明的是生成的<em>output</em>文件的路径，而不是源文件的路径。为了决定输出文件的内容和位置，可以使用<code>--debug</code>标志。如果需要，<code>--write-selected</code>后面可以跟多个以逗号分开的路径，或者也可以在设置文件中配置。（见<a href="https://docs.getpelican.com/en/stable/settings.html#writing-only-selected-content">Writing only selected content</a>）</p>
+<p>你也可以告诉Pelican留意你的更改，而不是每次修改后都要手动再运行。为了做到这一点，在运行<code>pelican</code>时加上<code>-r</code>或者<code>--autoload</code>选项。再非Windows环境下，这一选项也可以和<code>-l</code>或<code>--listen</code>选项结合使用，以在自动重生成站点的同时将其部署到<a href="http://localhost:8000">http://localhost:8000</a>:</p>
+<div class="highlight"><pre><span></span><span class="n">pelican</span> <span class="o">--</span><span class="n">autoreload</span> <span class="o">--</span><span class="n">listen</span>
+</pre></div>
+
+
+<p>Pelican还有很多其他可用的选项，你可以用以下命令查看所有选项：</p>
+<div class="highlight"><pre><span></span><span class="err">pelican --help</span>
+</pre></div>
+
+
+<h2>预览生成的站点</h2>
+<p>Pelican生成的文件是静态文件，事实上你不需要任何特殊的东西在预览他们，你可以用你的浏览器直接打开生成的HTML文件：</p>
+<div class="highlight"><pre><span></span><span class="err">firefox output/index.html</span>
+</pre></div>
+
+
+<p>因为上述方式可能在定位你的CSS和其他相关内容是出问题，所以运行Pelican内置的网页服务器经常能提供更可靠的预览体验：</p>
+<div class="highlight"><pre><span></span><span class="err">pelican --listen</span>
+</pre></div>
+
+
+<p>一旦启动了网页服务器，你就可以在<a href="http://localhost:8000">http://localhost:8000</a>预览你的站点。</p>
+<h1>部署</h1>
+<p>当你生成你的站点并且在本地开发环境中预览之后，你就准备好将它部署到产品中了。你可以用任何你之前可能定义过的与产品有关的设置重新生成你的站点（比如说analytics&nbsp;feeds等）：</p>
+<div class="highlight"><pre><span></span><span class="err">pelican contents -s publishconf.py</span>
+</pre></div>
+
+
+<p>如果你想在<code>pelicanconf.py</code>的基础上建立你的发布配置，你可以在<code>publishconf.py</code>中加入以下代码把<code>pelicanconf.py</code>中的设置引进其中：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pelicanconf</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+
+
+<p>如果你已经用<code>pelican-quickstart</code>生产了<code>publishconf.py</code>，那么这条代码已经默认包含了。</p>
+<p>部署站点的具体步骤依赖于你把你的网站托管在什么平台上。如果你有运行Ngnix或Apache的服务器的SSH权限，你可以用<code>rsync</code>工具转化你的站点文件：</p>
+<div class="highlight"><pre><span></span><span class="n">rsync</span> <span class="o">-</span><span class="n">avc</span> <span class="o">--</span><span class="n">delete</span> <span class="n">output</span><span class="o">/</span> <span class="n">host</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">site</span><span class="o">/</span>
+</pre></div>
+
+
+<p>还有很多其他的部署选项，其中有一些在你第一次用<code>pelican-quickstart</code>配置站点时就已经设置好了。在<a href="https://docs.getpelican.com/en/stable/tips.html">Tips</a>页面你看以看到将网站托管到Github&nbsp;Pages的一些细节。</p>
+<h1>自动化</h1>
+<p>尽管Pelican命令是生成站点的经典方式，自动工具可以让你的站点生成更加生产线化。在<code>pelican-quickstart</code>过程中的一个问题是你是否像自动化你的站点生成和发布。如果你的回答是的话，在你的项目的根目录下会生成<code>tasks.py</code>和<code>Makefile</code>，这些文件以及在<code>pelican-quickstart</code>过程中的其他问题的答案给出的信息只是一个起点，而你需要进一步地定制以使其更符合你的使用习惯。如果你发现这些自动化工具中的一个或多个作用有限，你随时可以把这些文件删除而不会影响到经典的<code>pelican</code>命令。</p>
+<p>接下来是一些能够“封装”<code>pelican</code>命令的自动化工具，他们能够简化站点生成、预览和上传的步骤。</p>
+<h2>Inboke</h2>
+<p><a href="https://www.pyinvoke.org/">Invoke</a>的优点是它是用Python写的，所以它的使用范围非常广。它的缺点是它需要单独安装。使用下面的命令安装Invoke，如果你的环境要求则需要前缀<code>sudo</code>：</p>
+<div class="highlight"><pre><span></span><span class="err">python -m pip install invoke</span>
+</pre></div>
+
+
+<p>打开在你的项目根目录下胜场的<code>task.py</code>。你将会看到很多命令，其中任何一个都能被重命名、删除和/或按你的喜爱定制。使用out-of-the-box配置，你可以通过以下命令生成你的站点：</p>
+<div class="highlight"><pre><span></span><span class="err">invoke build</span>
+</pre></div>
+
+
+<p>如果你喜欢在每一次改变被探测时都让Pelican自动生成你的站点（这在本地测试时非常方便），使用下面的命令：</p>
+<div class="highlight"><pre><span></span><span class="err">invoke regenerate</span>
+</pre></div>
+
+
+<p>为你的站点提供服务器，从而使它能在<a href="http://localhost:8000/">http://localhost:8000/</a>：</p>
+<div class="highlight"><pre><span></span><span class="err">invoke serve</span>
+</pre></div>
+
+
+<p>为了使你的浏览器能在每次发生改变时重载你的站点，首先<code>python -m pip install livereload</code>，然后使用下面的命令：</p>
+<div class="highlight"><pre><span></span><span class="n">invoke</span> <span class="n">livereload</span>
+</pre></div>
+
+
+<p>在<code>pelican-quickstart</code>过程中如果你对你是否像用SSH上传你的站点这一问题的回答是“是”的话，你可以通过以下命令用SSH发布你的站点：</p>
+<div class="highlight"><pre><span></span><span class="err">invoke publish</span>
+</pre></div>
+
+
+<p>这些只是一些默认命令，所以你可以自由的探索<code>task.py</code>，看看其他可用的命令。更重要的是，一定要按照你自己的需要和偏爱定制<code>task.py</code>。</p>
+<h2>Make</h2>
+<p>在<code>pelican-quickstart</code>过程中如果你对相关问题回答是的话，一个<code>Makefile</code>也被自动生成了。这一方式的优点是<code>make</code>命令在大多数POSIX系统中内置了，所以不需要额外安装任何东西就能使用它。缺点是非POSIX系统（比如说Windows）没有包含<code>make</code>，而在这些系统中安装它并不是一个简单的任务。</p>
+<p>如果你想通过<code>make</code>用<code>pelicanconf.py</code>中的设置生成你的站点，运行：</p>
+<div class="highlight"><pre><span></span><span class="err">make html</span>
+</pre></div>
+
+
+<p>使用<code>pelicanconf.py</code>中的设置发布你的站点，运行：</p>
+<div class="highlight"><pre><span></span><span class="err">make publish</span>
+</pre></div>
+
+
+<p>如果你喜欢在每一次改变被探测时都让Pelican自动生成你的站点（这在本地测试时非常方便），使用下面的命令：</p>
+<div class="highlight"><pre><span></span><span class="err">make regenerate</span>
+</pre></div>
+
+
+<p>为你的站点提供服务器，从而使它能在<a href="http://localhost:8000/">http://localhost:8000/</a>：</p>
+<div class="highlight"><pre><span></span><span class="err">make serve</span>
+</pre></div>
+
+
+<p>通常你需要在两个终端里分别运行<code>make regenerate</code>和<code>make serve</code>，但是也可以在一个终端里运行他们两个：</p>
+<div class="highlight"><pre><span></span><span class="err">make deserve</span>
+</pre></div>
+
+
+<p>上述命令将会同时运行Pelican里的重生成命令和将输出预览在<a href="http://localhost:8000/">http://localhost:8000/</a>的命令。</p>
+<p>当你准备发布你的站点时，你可以通过你在<code>pelican-quickstart</code>的提问环节中选择方式上传。比如说，你可以使用rsync（<span class="caps">SSH</span>）：</p>
+<div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">rsync_upload</span>
+</pre></div>
+
+
+<p>就是这样，现在你的站点应该就活了！</p>
+<p>（默认的<code>Makefile</code>和<code>devserver.sh</code>脚本使用<code>python</code>和<code>pelican</code>来完成他们的任务。如果你想用不同的命令，比如说<code>python3</code>，你可以分别设置<code>PY</code>和<code>PELICAN</code>环境变量覆盖默认的命令名。&nbsp;）</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

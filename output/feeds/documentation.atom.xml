@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Do you want to dance,too? - Documentation</title><link href="https://dancer.com/" rel="alternate"></link><link href="https://dancer.com/feeds/documentation.atom.xml" rel="self"></link><id>https://dancer.com/</id><updated>2020-09-23T18:00:00+08:00</updated><entry><title>Pelican文档（3）——撰写内容</title><link href="https://dancer.com/pelicanwen-dang-3-zhuan-xie-nei-rong.html" rel="alternate"></link><published>2020-09-23T18:00:00+08:00</published><updated>2020-09-23T18:00:00+08:00</updated><author><name>SunHao</name></author><id>tag:dancer.com,2020-09-23:/pelicanwen-dang-3-zhuan-xie-nei-rong.html</id><summary type="html">&lt;p&gt;这是Pelican英文文档中文翻译的第&lt;strong&gt;一&lt;/strong&gt;部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中是“笔记本”的意思。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;文章和页面&lt;/h1&gt;
+&lt;p&gt;Pelican把“文章”看成是依赖时序的内容，比如说blog中的投稿，所以它将每一篇文章和一个时间相联系。&lt;/p&gt;
+&lt;p&gt;“页面”背后的意思是他们通常不是临时的，而且被用于那些不会经常修改的内容（比如说“About”或者“Contact”页面）。&lt;/p&gt;
+&lt;h1&gt;文件元数据&lt;/h1&gt;
+&lt;p&gt;Pelican尽量做到足够智能以便从文件系统（比如说关于你文章的分类）中获取它需要的信息，但是有些信息还是需要你在文件中以元数据的形式给出。&lt;/p&gt;
+&lt;p&gt;如果你是用reStructuredText格式撰写你的内容，你可以在文本文件里用下面的语法提供这些元数据信息（文件后缀名为&lt;code&gt;.rst&lt;/code&gt;）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="n"&gt;super&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="o"&gt;##############&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;modified&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;thats&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;yeah&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Alexis&lt;/span&gt; &lt;span class="n"&gt;Metaireau&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conan&lt;/span&gt; &lt;span class="n"&gt;Doyle&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Short&lt;/span&gt; &lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="k"&gt;index&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;feeds&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Author和tag列表可以用分号隔开，这样你的作者和标签内容就可以包含逗号了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt; &lt;span class="k"&gt;tool&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bird&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Metaireau&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Alexis&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;Doyle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conan&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pelican包含一个支持HTML标签&lt;code&gt;abbr&lt;/code&gt;的reStructureedText的扩展，你可以在你的投稿中写上下面的内容启用它：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;This will be turned into :abbr:`HTML (HyperText Markup Language)`.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你也可以使用Markdown语法（文件后缀名为&lt;code&gt;.md&lt;/code&gt;，&lt;code&gt;markdwon&lt;/code&gt;，&lt;code&gt;mkd&lt;/code&gt;或者&lt;code&gt;.mdown&lt;/code&gt;）。生成Markdown首先要求你明确安装了&lt;a href="https://github.com/Python-Markdown/markdown"&gt;Python-Markdown&lt;/a&gt;包，这可以通过&lt;code&gt;pip install Markdwon&lt;/code&gt;命令完成。&lt;/p&gt;
+&lt;p&gt;Pelican也支持&lt;a href="https://python-markdown.github.io/extensions/"&gt;Markdown Extensions&lt;/a&gt;，如果他们没有被包含在默认的&lt;code&gt;Markdown&lt;/code&gt;包内你可以单独安装，他们可以用&lt;code&gt;MARKDOWN&lt;/code&gt;设置进行配置和加载。&lt;/p&gt;
+&lt;p&gt;Markdwon投稿的元数据语法应该遵循以下格式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;span class="n"&gt;Modified&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
+&lt;span class="n"&gt;Authors&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Alexis&lt;/span&gt; &lt;span class="n"&gt;Metaireau&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Conan&lt;/span&gt; &lt;span class="n"&gt;Doyle&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Short&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;feeds&lt;/span&gt;
+
+&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你也可以为了自己使用方便定义自己的元数据关键词（只要他们和保留的元数据关键词不冲突）。下面的表包含了所有的保留元数据关键词：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;元数据&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文章或页面的标题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;公开时间（&lt;code&gt;YYYY-MM-DD HH:SS&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;modified&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;修改时间（&lt;code&gt;YYYY-MM-DD HH:SS&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的标签，用逗号分开&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;keywords&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的关键词，用逗号分开（只适用于HTML内容）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的分类（只能有一个）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;slug&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;URLs和翻译的标识&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;author&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的作者，只能写一个&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;authors&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的作者，可以写多个&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;summary&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容所在页面的简单描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lang&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的语言ID（&lt;code&gt;en&lt;/code&gt;，&lt;code&gt;fr&lt;/code&gt;等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;traslation&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;如果内容是作者的翻译（&lt;code&gt;true&lt;/code&gt;或&lt;code&gt;false&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内容的状态：&lt;code&gt;draft&lt;/code&gt;，&lt;code&gt;hidden&lt;/code&gt;或&lt;code&gt;published&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;用来生成内容的模板名字（没有拓展）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;save_as&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以相对路径保存内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;url&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;这一文章/页面的URL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;读者可以通过插件添加额外的格式（比如说&lt;a href="https://www.methods.co.nz/cgi-sys/suspendedpage.cgi"&gt;AsciiDoc&lt;/a&gt;），详情参考&lt;a href="https://github.com/getpelican/pelican-plugins"&gt;pelican-plugins&lt;/a&gt;仓库。&lt;/p&gt;
+&lt;p&gt;Pelican也能够处理以&lt;code&gt;.html&lt;/code&gt;和&lt;code&gt;.htm&lt;/code&gt;为后缀的HTML文件。Pelican以一种非常直接的方式解释HTML，从&lt;code&gt;meta&lt;/code&gt;标签中读取元数据，从&lt;code&gt;title&lt;/code&gt;标签中读取标题，从&lt;code&gt;body&lt;/code&gt;标签中读取主体：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;My super title&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;thats, awesome&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;date&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2012-07-09 22:28&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;modified&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2012-07-10 20:14&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;category&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;yeah&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;authors&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Alexis Métaireau, Conan Doyle&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;summary&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Short version for index and feeds&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        This is the content of my super blog post.
+    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;HTML中有一个元数据比较特殊：标签可以用&lt;code&gt;tags&lt;/code&gt;元数据定义，就像Pelican的标准用法一样，也可以用&lt;code&gt;keywords&lt;/code&gt;元数据定义，就像HTML的标准用法一样。这两种用法可以交替使用。&lt;/p&gt;
+&lt;p&gt;需要注意的是，除了标题，所有元数据都不是必须的：如果时间没有给出，并且&lt;code&gt;DEFAULT_DATE&lt;/code&gt;被设置为&lt;code&gt;'fs'&lt;/code&gt;，Pelican将会采用文件的“mtime”时间戳，而分类可以用文件所在的文件夹决定。比如说一个位于&lt;code&gt;python/foobar/myfoobar.rst&lt;/code&gt;的文件将会被赋予&lt;code&gt;foobar&lt;/code&gt;的分类。如果你想按照其他的方式组织你的文件，而文件夹不是一个合适的分类名，你可以在设置里把&lt;code&gt;USE_FOLDER_AS_CATEGORY&lt;/code&gt;设为&lt;code&gt;False&lt;/code&gt;。当句法分析时间在页面元数据中给出，Pelican支持W3C的&lt;a href="https://www.w3.org/TR/NOTE-datetime"&gt;suggested subset &lt;span class="caps"&gt;ISO&lt;/span&gt; 8601&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;所以标题是唯一要求的元数据。如果你觉得这样很烦，别担心。除了每次都在元数据里给出标题，你还可以用内容的源文件名作为标题。比如说，一个文件名为&lt;code&gt;Publishing via Pelican.md&lt;/code&gt;的Markdown文件将会自动获得标题&lt;em&gt;Publishing via Pelican&lt;/em&gt;。如果你更喜欢这种方式，可以在设置文件里加上这样的内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;FILENAME_METADATE = `(?P&amp;lt;title&amp;gt;.*)`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;modified&lt;/code&gt;应该是你最后一次更新文章的时间，而且是你没有指明&lt;code&gt;date&lt;/code&gt;时的默认值。你可以在内容里显示&lt;code&gt;modified&lt;/code&gt;。当你修改文章后把&lt;code&gt;modiified&lt;/code&gt;设为当前时间，订阅读者的相关订阅条款会自动更新。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;authors&lt;/code&gt;是一个以逗号分隔的文章作者的列表，如果只有一个作者你可以用&lt;code&gt;author&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果你在一次投稿中不明确给出摘要，&lt;code&gt;SUMMARY_MAX_LENGTH&lt;/code&gt;设置可以被用来设置从文章开头截取多少字作为摘要。&lt;/p&gt;
+&lt;p&gt;你还可以从通过&lt;code&gt;FILENAME_METADATA&lt;/code&gt;设置从文件名中获取其他的元数据。文件名中配对的数据将会被设为元数据对象。&lt;code&gt;FILENAME_METADATA&lt;/code&gt;的默认值是只从文件名中获取日期。比如说，如果你想从文件名同时获取日期和slug，你可以将其设置为&lt;code&gt;'(?P&amp;lt;date&amp;gt;\d{4}-\d{2}-\d{2})_(?P&amp;lt;slug&amp;gt;.*)'&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;请记住，文件内可用的元数据对从文件名中获取的元数据具有优先权。&lt;/p&gt;
+&lt;h1&gt;页面&lt;/h1&gt;
+&lt;p&gt;如果你在content文件夹内创建了一个名为&lt;code&gt;pages&lt;/code&gt;的文件夹，所有其中的文件都会被用来生成静态页面，比如说&lt;strong&gt;About&lt;/strong&gt;或&lt;strong&gt;Contact&lt;/strong&gt;页面。（见下面的文件系统配置例子。）&lt;/p&gt;
+&lt;p&gt;你可以用&lt;code&gt;DSIPLAY_PAGES_ON_MENU&lt;/code&gt;设置来控制是否将这些页面都显示在主页的导航菜单中。（默认值是&lt;code&gt;True&lt;/code&gt;。）&lt;/p&gt;
+&lt;p&gt;如果你不想把某些页面显示在导航栏中，就在内容的元数据中添加&lt;code&gt;status: hidden&lt;/code&gt;。这对于为你的站点创建错误页面很有用。&lt;/p&gt;
+&lt;h1&gt;静态内容&lt;/h1&gt;
+&lt;p&gt;静态内容是除了文章和页面之外的内容，它们不需要处理而是直接复制到output文件夹中。你可以用&lt;code&gt;pelicanconf.py&lt;/code&gt;文件中的&lt;code&gt;STATIC_PATHS&lt;/code&gt;设置控制复制哪些静态文件。Pelican的默认设置是&lt;code&gt;image&lt;/code&gt;目录，但是其他的必须要手动添加。如此之外其他需要明确关联的静态文件包括（见下文）&lt;/p&gt;
+&lt;h2&gt;相同文件夹内的混合内容&lt;/h2&gt;
+&lt;p&gt;从Pelican3.5开始，静态文件可以安全地和页面源文件共享同一个目录，而不会把页面源文件暴露在生成的站点中。任意一个这样的目录都要同时被加入&lt;code&gt;STATIC_PATHS&lt;/code&gt;和&lt;code&gt;PAGE_PATH&lt;/code&gt;（或&lt;code&gt;STATIC_PATHS&lt;/code&gt;和&lt;code&gt;ARTICLE_PATHS&lt;/code&gt;）中。Pelican将会正常地识别和处理页面源文件，如果其他文件都在一个保存静态文件的单独目录内，Pelican会把剩余的文件复制到输出中。&lt;/p&gt;
+&lt;p&gt;注意：把静态文件和内容源文件放在相同的源目录内并不能保证他们最终将会出现在生成的站点中的同一位置。做到这一点的最简单方法时用&lt;code&gt;{attach}&lt;/code&gt;链接语法（下面会说）。除此之外，&lt;code&gt;STATIC_SAVE_AS&lt;/code&gt;，&lt;code&gt;PAGE_SAVE_AS&lt;/code&gt;和&lt;code&gt;ARTICLE_SAVE_AS&lt;/code&gt;设置（和对应的&lt;code&gt;*_URL&lt;/code&gt;设置）能够被用来设置将不同种类的文件保存在一起，就像他们在Pelican早期版本中的作用一样。&lt;/p&gt;
+&lt;h2&gt;内部内容之间的链接&lt;/h2&gt;
+&lt;p&gt;从Pelican3.1开始，可以将站点内的链接在内容文件夹内进行链接，而不用在生成的站点的文件夹内进行链接。这使得我们从当前的投稿链接到另一个可能与之相关的投稿更加简单（不需要知道被链接的内容在被生成的站点内的位置）。&lt;/p&gt;
+&lt;p&gt;为了链接内部的内容（&lt;code&gt;content&lt;/code&gt;目录内的文件），可以使用下面的语法链接到目标文件：&lt;code&gt;{filename}path/to/file&lt;/code&gt;。注意：用来分隔目录层级的反斜杠&lt;code&gt;/&lt;/code&gt;在所有操作系统内都一样，包括Windows。&lt;/p&gt;
+&lt;p&gt;比如说，一个Pelican项目可能具有如下的结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;website/&lt;/span&gt;
+&lt;span class="err"&gt;├── content&lt;/span&gt;
+&lt;span class="err"&gt;│   ├── category/&lt;/span&gt;
+&lt;span class="err"&gt;│   │   └── article1.rst&lt;/span&gt;
+&lt;span class="err"&gt;│   ├── article2.md&lt;/span&gt;
+&lt;span class="err"&gt;│   └── pages&lt;/span&gt;
+&lt;span class="err"&gt;│       └── about.md&lt;/span&gt;
+&lt;span class="err"&gt;└── pelican.conf.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在这个例子里，&lt;code&gt;article.rst&lt;/code&gt;可以这么写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="k"&gt;first&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;
+&lt;span class="o"&gt;#################&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2012&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;01&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;
+
+&lt;span class="n"&gt;See&lt;/span&gt; &lt;span class="n"&gt;below&lt;/span&gt; &lt;span class="n"&gt;intra&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;reStructuredText&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="k"&gt;relative&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;current&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;article2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;`&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
+&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="k"&gt;relative&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;article2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;`&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;而&lt;code&gt;article2.md&lt;/code&gt;可以这么写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;second&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2012&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;01&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;
+
+&lt;span class="n"&gt;See&lt;/span&gt; &lt;span class="n"&gt;below&lt;/span&gt; &lt;span class="n"&gt;intra&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;examples&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Markdown&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;relative&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;article1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;rst&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;relative&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;}/&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;article1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;rst&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;链接到静态文件&lt;/h2&gt;
+&lt;p&gt;你可以用&lt;code&gt;{static}path/to/file&lt;/code&gt;链接到静态内容。被这一语法链接的文件将会自动被复制到输出目录里，即使包含他们的源目录没有被包含在项目设置文件&lt;code&gt;pelicanconf.py&lt;/code&gt;中的&lt;code&gt;STATIC-PATH&lt;/code&gt;里。&lt;/p&gt;
+&lt;p&gt;比如说，你个项目的内容目录可能有如下的结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;content&lt;/span&gt;
+&lt;span class="err"&gt;├── images&lt;/span&gt;
+&lt;span class="err"&gt;│   └── han.jpg&lt;/span&gt;
+&lt;span class="err"&gt;├── pdfs&lt;/span&gt;
+&lt;span class="err"&gt;│   └── menu.pdf&lt;/span&gt;
+&lt;span class="err"&gt;└── pages&lt;/span&gt;
+&lt;span class="err"&gt;    └── test.md&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;test.md&lt;/code&gt;可以被写成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Alt&lt;/span&gt; &lt;span class="n"&gt;Text&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;han&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Our&lt;/span&gt; &lt;span class="n"&gt;Menu&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pdfs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;menu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;站点生成时将会把&lt;code&gt;han.jpg&lt;/code&gt;复制到&lt;code&gt;output/images/han.jpg&lt;/code&gt;，把&lt;code&gt;menu.pdf&lt;/code&gt;复制到&lt;code&gt;output/pdfs/menu.pdf&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果你使用&lt;code&gt;{static}&lt;/code&gt;链接一个文章或页面，将会链接到它的源代码。&lt;/p&gt;
+&lt;h2&gt;绑定静态文件&lt;/h2&gt;
+&lt;p&gt;从Pelican3.5开始，静态文件可以通过&lt;code&gt;{attach}path/to/file&lt;/code&gt;将静态文件“绑定”到一个页面或文章。这一命令和&lt;code&gt;{static}&lt;/code&gt;的语法很像，但是它把静态文件和链接它的文件放在输出目录的相同位置。如果最初的静态文件位于链接它的源文件的一个子目录里，这一关系将会在输出中保留。否则它将会和链接它的文件位于同一目录下。&lt;/p&gt;
+&lt;p&gt;这一命令只对静态文件有效。&lt;/p&gt;
+&lt;p&gt;比如说，一个项目的内容目录可能具有如下的结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;icons&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;photo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;testpost&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;downloads&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;archive&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;pelicanconf.py&lt;/code&gt;将会包括：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;PATH = &amp;#39;content&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;ARTICLE_PATHS = [&amp;#39;blog&amp;#39;]&lt;/span&gt;
+&lt;span class="err"&gt;ARTICLE_SAVE_AS = &amp;#39;{date:%Y}/{slug}.html&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;ARTICLE_URL = &amp;#39;{date:%Y}/{slug}.html&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;testpost.md&lt;/code&gt;将会包括：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Test&lt;/span&gt; &lt;span class="n"&gt;Post&lt;/span&gt;
+&lt;span class="nl"&gt;Category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
+&lt;span class="nl"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014-10-31&lt;/span&gt;
+
+&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Icon&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;attach&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;icons&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Photo&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;attach&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;photo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Downloadable&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;]({&lt;/span&gt;&lt;span class="n"&gt;attach&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;downloads&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;archive&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;生成站点时产生的输出目录具有如下的结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;output&lt;/span&gt;
+&lt;span class="err"&gt;└── 2014&lt;/span&gt;
+&lt;span class="err"&gt;    ├── archive.zip&lt;/span&gt;
+&lt;span class="err"&gt;    ├── icons&lt;/span&gt;
+&lt;span class="err"&gt;    │   └── icon.png&lt;/span&gt;
+&lt;span class="err"&gt;    ├── photo.jpg&lt;/span&gt;
+&lt;span class="err"&gt;    └── test-post.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意，用&lt;code&gt;{attach}&lt;/code&gt;链接的文件最终或者会和输出的文章位于同一目录，或者位于输出文章所在目录的子目录中。&lt;/p&gt;
+&lt;p&gt;如果一个文件被链接多次，&lt;code&gt;{attach}&lt;/code&gt;的改变位置的特性只有在这些链接的第一个中才会被处理。第一次链接之后，Pelican将会把&lt;code&gt;attach&lt;/code&gt;当成&lt;code&gt;{static}&lt;/code&gt;处理。这避免了破坏之前处理的链接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;当同时有多个文件都链接同一个文件时一定要小心&lt;/strong&gt;：因为第一次链接将会决定被链接文件的最终位置，而Pelican并不会区分文件被处理的顺序，被链接到多个文件的文件有可能在不同的编译之后位于不同的位置。（这在现实中是否会发生取决于操作系统，文件系统，Pelican的版本和项目中增加、修改或删除的文件。）那么链接到文件之前旧的位置的链接就会失效。所以明智的做法是只有当链接到同一个文件的多个链接文件位于同一目录里时才用&lt;code&gt;{attach}&lt;/code&gt;。在这一条件下，文件的输出位置不会在将来的编译中改变。对于没有这么做的情况，可以考虑用&lt;code&gt;{static}&lt;/code&gt;而不是&lt;code&gt;{attach}&lt;/code&gt;，并且用项目的&lt;code&gt;STATIC_SAVE_AS&lt;/code&gt;和&lt;code&gt;STATIC_URL&lt;/code&gt;设置决定输出文件的位置。&lt;/p&gt;
+&lt;p&gt;注意：当使用&lt;code&gt;{attach}&lt;/code&gt;的时候，&lt;code&gt;*_URL&lt;/code&gt;/&lt;code&gt;*_SAVE_AS&lt;/code&gt;设置里的所有父目录都要互相匹配。见&lt;a href="https://docs.getpelican.com/en/stable/settings.html#url-settings"&gt;URL设置&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;链接作者，分类，索引和标签&lt;/h2&gt;
+&lt;p&gt;你可以用&lt;code&gt;{author}name&lt;/code&gt;，&lt;code&gt;{category}foobar&lt;/code&gt;，&lt;code&gt;{index}&lt;/code&gt;和&lt;code&gt;{tag}tagname&lt;/code&gt;语法链接作者，分类，索引和标签。&lt;/p&gt;
+&lt;h2&gt;极不推荐的内部链接语法&lt;/h2&gt;
+&lt;p&gt;为了和更早的版本相比较，Pelican在内部链接中除了花括号(&lt;code&gt;{}&lt;/code&gt;)仍然支持竖括号（&lt;code&gt;||&lt;/code&gt;）。比如说：&lt;code&gt;|filename|an_article.rst&lt;/code&gt;，&lt;code&gt;|tag|tagname&lt;/code&gt;，&lt;code&gt;|category|foobar&lt;/code&gt;。将&lt;code&gt;||&lt;/code&gt;换成&lt;code&gt;{}&lt;/code&gt;是为了避免和Markdown扩展或reST命令的冲突。相似地，Pelican仍然支持用&lt;code&gt;{filename}&lt;/code&gt;链接静态内容。语法变为&lt;code&gt;{static}&lt;/code&gt;是为了既能在生成的文章和页面之间，也能在他们的静态源文件之间链接。&lt;/p&gt;
+&lt;p&gt;对旧语法的支持最终会被删除。&lt;/p&gt;
+&lt;h2&gt;包含其他文件&lt;/h2&gt;
+&lt;p&gt;Markdown和reStructuredText都维持提供了机制。&lt;/p&gt;
+&lt;p&gt;下面是&lt;strong&gt;reStructuredText&lt;/strong&gt;用&lt;a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#include"&gt;the include directive&lt;/a&gt;命令的几个例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;include&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; file.rst
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;包含一个文件里由两个标识符界定的部分，比如说C++文件（按照行号分隔也是可以的）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;include&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; main.cpp
+    &lt;span class="nc"&gt;:code:&lt;/span&gt; C++
+    &lt;span class="nc"&gt;:start-after:&lt;/span&gt; // begin
+    &lt;span class="nc"&gt;:end-before:&lt;/span&gt; // end
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;包含一个未经处理的HTML文件（或者一个inline &lt;span class="caps"&gt;SVG&lt;/span&gt;）并且将它不经处理直接输出：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;raw&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; html
+    &lt;span class="nc"&gt;:file:&lt;/span&gt; table,html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至于&lt;strong&gt;Markdown&lt;/strong&gt;，必须要依赖于拓展，比如说用&lt;a href="https://github.com/neurobin/mdx_include"&gt;mdx_include plugin&lt;/a&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;```html&lt;/span&gt;
+&lt;span class="err"&gt;{! template.html !}&lt;/span&gt;
+&lt;span class="err"&gt;```&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;导入一个存在的站点&lt;/h1&gt;
+&lt;p&gt;使用简单的脚本就可以将你在Wordpress，Tumblr，Dotclear和RSS feeds的站点导入Pelican。见&lt;a href="https://docs.getpelican.com/en/stable/importer.html#import"&gt;Importing an existing site&lt;/a&gt;。&lt;/p&gt;
+&lt;h1&gt;翻译&lt;/h1&gt;
+&lt;p&gt;翻译文章是可能的，为此你需要为你的文章/页面添加一个&lt;code&gt;lang&lt;/code&gt;元数据，并且设置好&lt;code&gt;DEFAULT_LANG&lt;/code&gt;（它的默认值是英语[en]）。这些都设置好了之后，只有拥有默认语言的文章将会被列出来，而且每一篇文章都会有一个可用的翻译版本的列表。&lt;/p&gt;
+&lt;p&gt;注意：Pelican的核心功并不能为每一中语言的翻译版本都生成子站点（例如&lt;code&gt;example.com/de&lt;/code&gt;），这样的高级功能可以用&lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/i18n_subsites"&gt;i18n_subsites plugin&lt;/a&gt;实现。&lt;/p&gt;
+&lt;p&gt;Pleican默认使用文章的URL“slug”来确定是是否两篇或多篇文章是彼此的翻译版本。（这可以通过&lt;code&gt;ARTICLE_TRANSLATION_ID&lt;/code&gt;设置改变。）slug可以在文件的元数据中设置；如果没有明确设置，Pelican将会从文章的标题中自动生成slug。&lt;/p&gt;
+&lt;p&gt;下面是两个例子，一个是英语一个是法语。&lt;/p&gt;
+&lt;p&gt;英语文章：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Foobar&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;dead&lt;/span&gt;
+&lt;span class="o"&gt;##################&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dead&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt;
+
+&lt;span class="n"&gt;That&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;still&lt;/span&gt; &lt;span class="n"&gt;alive&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;法语文章：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Foobar&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;est&lt;/span&gt; &lt;span class="n"&gt;pas&lt;/span&gt; &lt;span class="n"&gt;mort&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="o"&gt;#######################&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dead&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fr&lt;/span&gt;
+
+&lt;span class="n"&gt;Oui&lt;/span&gt; &lt;span class="n"&gt;oui&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt; &lt;span class="n"&gt;toujours&lt;/span&gt; &lt;span class="n"&gt;vivant&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;尽管文章不同，但是你可以看出来两文章的slug是相同的，所以它被当做是标识符。如果你不喜欢这样明确定义，你必须保证翻译文章和原文章的标题一致，因为slug将会根据文章标题自动生成。&lt;/p&gt;
+&lt;p&gt;如果你不希望某一篇文章的原版本被&lt;code&gt;DEFAULT_LANG&lt;/code&gt;探测为翻译版本，你可以用&lt;code&gt;translation&lt;/code&gt;元数据标明哪一篇是翻译版本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Foobar&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;dead&lt;/span&gt;
+&lt;span class="o"&gt;##################&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dead&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;en&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;translation&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;
+
+&lt;span class="n"&gt;That&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;foobar&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;still&lt;/span&gt; &lt;span class="n"&gt;alive&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;语法高亮&lt;/h1&gt;
+&lt;p&gt;Pelican能够为你的代码块提供带颜色的语法高亮。为了做到这一点你可以在你的内容文件里采取以下约定。&lt;/p&gt;
+&lt;p&gt;对于reStructuredText，使用&lt;code&gt;code-block&lt;/code&gt;指令来指明需要高亮的代码类型（在这些例子里，我们使用&lt;code&gt;python&lt;/code&gt;）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code-block&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; python
+
+   print(&amp;quot;Pelican is a static site generator.&amp;quot;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;对于Markdown，需要使用&lt;a href="https://python-markdown.github.io/extensions/code_hilite/#syntax"&gt;CodeHilite extension&lt;/a&gt;，需要在代码块的上方将语言标识符和代码使用相同的缩进：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;There&lt;/span&gt; &lt;span class="k"&gt;are&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;ways&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;specify&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;identifier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="p"&gt;:::&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;The triple-colon syntax will *not* show line numbers.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;To&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="n"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;less&lt;/span&gt; &lt;span class="n"&gt;shebang&lt;/span&gt; &lt;span class="k"&gt;instead&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;colons&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="o"&gt;#!&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;The path-less shebang syntax *will* show line numbers.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;知名的标识符（如&lt;code&gt;python&lt;/code&gt;，&lt;code&gt;ruby&lt;/code&gt;）应该和&lt;a href="https://pygments.org/docs/lexers/"&gt;list of available lexers&lt;/a&gt;中给出的一致。&lt;/p&gt;
+&lt;p&gt;当使用reStructuredText时，代码块指令的可用参数如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Option&lt;/th&gt;
+&lt;th&gt;Valid values&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;anchorlinenos&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;If present wrap line numbers in &lt;a&gt; tags.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;classprefix&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;String to prepend to token class names&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hl_lines&lt;/td&gt;
+&lt;td&gt;numbers&lt;/td&gt;
+&lt;td&gt;List of lines to be highlighted, where line numbers to highlight are separated by a space. This is similar to &lt;code&gt;emphasize-lines&lt;/code&gt; in Sphinx, but it does not support a range of line numbers separated by a hyphen, or comma-separated line numbers.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lineanchors&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;Wrap each line in an anchor using this string and -linenumber.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;linenos&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;If present or set to “table” output line numbers in a table, if set to “inline” output them inline. “none” means do not output the line numbers for this table.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;linenospecial&lt;/td&gt;
+&lt;td&gt;number&lt;/td&gt;
+&lt;td&gt;If set every nth line will be given the ‘special’ css class.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;linenostart&lt;/td&gt;
+&lt;td&gt;number&lt;/td&gt;
+&lt;td&gt;Line number for the first line.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;linenostep&lt;/td&gt;
+&lt;td&gt;number&lt;/td&gt;
+&lt;td&gt;Print every nth line number.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lineseparator&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;String to print between lines of code, ‘n’ by default.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;linespans&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;Wrap each line in a span using this and -linenumber.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;noblockground&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;If set do not output background color for the wrapping element.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nowrap&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;If set do not wrap the tokens at all.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tagsfile&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;ctags file to use for name definitions.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tagurlformat&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;format for the ctag links.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注意，根据不同的版本，Pygments模块可能不支持上说所有的选项。各个选项的更多细节可以参考&lt;a href="https://pygments.org/docs/formatters/"&gt;Pygments documentation&lt;/a&gt;的&lt;em&gt;HtmlFormatter&lt;/em&gt;章节。&lt;/p&gt;
+&lt;p&gt;比如说，下面的代码块启用了行号，从153开始，并且在Pygments CSS类之前设置了前缀&lt;em&gt;pgcss&lt;/em&gt;使得名字更加特别从而避免了可能的CSS冲突：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code-block&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; identifier
+    &lt;span class="nc"&gt;:classprefix:&lt;/span&gt; pgcss
+    &lt;span class="nc"&gt;:linenos:&lt;/span&gt; table
+    &lt;span class="nc"&gt;:linenostart:&lt;/span&gt; 153
+
+   &amp;lt;indented code block goes here&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以在Pelican的设置文件里设置&lt;code&gt;PYGMENTS_RST_OPTIONS&lt;/code&gt;变量来包含你想在每一个代码块中自动应用的选项。&lt;/p&gt;
+&lt;p&gt;比如说，如果你想在每一个代码块中都启用行号和一个CSS前缀，你可以将这一变量设置为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;PYGMENTS_RST_OPTIONS = {&amp;#39;classprefix&amp;#39;: &amp;#39;pgcss&amp;#39;, &amp;#39;linenos&amp;#39;: &amp;#39;table&amp;#39;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果在特定代码块中标明了别的设置，那么这一设置将会覆盖设置文件里的默认设置。&lt;/p&gt;
+&lt;h1&gt;发布草稿&lt;/h1&gt;
+&lt;p&gt;如果你想把某一文章或页面作为草稿发布（比如说在正式发布前让朋友检查一下），你可以在元数据里添加&lt;code&gt;Status: draft&lt;/code&gt;。这篇文章会输出到&lt;code&gt;drafts&lt;/code&gt;文件夹并且不会在主页和任何分类、标签下被列出来。&lt;/p&gt;
+&lt;p&gt;如果你的文章都想默认作为草稿发布（避免在文章完成前不小心发布）你可以在&lt;code&gt;DEFAULT_METADATA&lt;/code&gt;添加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;DEFAULT_METADATA = {&lt;/span&gt;
+&lt;span class="err"&gt;    &amp;#39;status&amp;#39;: &amp;#39;draft&amp;#39;,&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;发布一篇默认状态时&lt;code&gt;draft&lt;/code&gt;的文章，可以在文章的元数据中更新&lt;code&gt;Status: published&lt;/code&gt;。&lt;/p&gt;</content><category term="Documentation"></category><category term="pelican"></category><category term="documentation"></category></entry><entry><title>Pelican文档（4）——发布你的站点</title><link href="https://dancer.com/pelicanwen-dang-4-fa-bu-ni-de-zhan-dian.html" rel="alternate"></link><published>2020-09-23T18:00:00+08:00</published><updated>2020-09-23T18:00:00+08:00</updated><author><name>SunHao</name></author><id>tag:dancer.com,2020-09-23:/pelicanwen-dang-4-fa-bu-ni-de-zhan-dian.html</id><summary type="html">&lt;p&gt;这是Pelican英文文档中文翻译的第&lt;strong&gt;一&lt;/strong&gt;部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中是“笔记本”的意思。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;站点生成&lt;/h1&gt;
+&lt;p&gt;一旦Pelican安装完成并且你拥有了一些内容（比如Markdown或reST格式的文件），你可以通过&lt;code&gt;pelican&lt;/code&gt;命令将你的内容转化为HTML，你也可以指明你的内容的路径和（可选择地）你的设置文件的路径：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican /path/to/your/content/ [-s path/to/your/settings.py]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上命令将会用默认的主题生成一个简单的站点并且将其保存在&lt;code&gt;output/&lt;/code&gt;文件夹内。默认主题由不包含任何装饰的简单HTML组成，你可以以它为基础创建自己的主题。&lt;/p&gt;
+&lt;p&gt;当处理单个文章或页面时，可以只生成这一内容对应的文件。为了做到这一点，使用&lt;code&gt;--write-selected&lt;/code&gt;参数，比如说：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican --write-selected output/posts/my-post-title.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意你需要指明的是生成的&lt;em&gt;output&lt;/em&gt;文件的路径，而不是源文件的路径。为了决定输出文件的内容和位置，可以使用&lt;code&gt;--debug&lt;/code&gt;标志。如果需要，&lt;code&gt;--write-selected&lt;/code&gt;后面可以跟多个以逗号分开的路径，或者也可以在设置文件中配置。（见&lt;a href="https://docs.getpelican.com/en/stable/settings.html#writing-only-selected-content"&gt;Writing only selected content&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;你也可以告诉Pelican留意你的更改，而不是每次修改后都要手动再运行。为了做到这一点，在运行&lt;code&gt;pelican&lt;/code&gt;时加上&lt;code&gt;-r&lt;/code&gt;或者&lt;code&gt;--autoload&lt;/code&gt;选项。再非Windows环境下，这一选项也可以和&lt;code&gt;-l&lt;/code&gt;或&lt;code&gt;--listen&lt;/code&gt;选项结合使用，以在自动重生成站点的同时将其部署到&lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;autoreload&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;listen&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pelican还有很多其他可用的选项，你可以用以下命令查看所有选项：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican --help&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;预览生成的站点&lt;/h2&gt;
+&lt;p&gt;Pelican生成的文件是静态文件，事实上你不需要任何特殊的东西在预览他们，你可以用你的浏览器直接打开生成的HTML文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;firefox output/index.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因为上述方式可能在定位你的CSS和其他相关内容是出问题，所以运行Pelican内置的网页服务器经常能提供更可靠的预览体验：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican --listen&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一旦启动了网页服务器，你就可以在&lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt;预览你的站点。&lt;/p&gt;
+&lt;h1&gt;部署&lt;/h1&gt;
+&lt;p&gt;当你生成你的站点并且在本地开发环境中预览之后，你就准备好将它部署到产品中了。你可以用任何你之前可能定义过的与产品有关的设置重新生成你的站点（比如说analytics&amp;nbsp;feeds等）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican contents -s publishconf.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你想在&lt;code&gt;pelicanconf.py&lt;/code&gt;的基础上建立你的发布配置，你可以在&lt;code&gt;publishconf.py&lt;/code&gt;中加入以下代码把&lt;code&gt;pelicanconf.py&lt;/code&gt;中的设置引进其中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelicanconf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你已经用&lt;code&gt;pelican-quickstart&lt;/code&gt;生产了&lt;code&gt;publishconf.py&lt;/code&gt;，那么这条代码已经默认包含了。&lt;/p&gt;
+&lt;p&gt;部署站点的具体步骤依赖于你把你的网站托管在什么平台上。如果你有运行Ngnix或Apache的服务器的SSH权限，你可以用&lt;code&gt;rsync&lt;/code&gt;工具转化你的站点文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;rsync&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;avc&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还有很多其他的部署选项，其中有一些在你第一次用&lt;code&gt;pelican-quickstart&lt;/code&gt;配置站点时就已经设置好了。在&lt;a href="https://docs.getpelican.com/en/stable/tips.html"&gt;Tips&lt;/a&gt;页面你看以看到将网站托管到Github&amp;nbsp;Pages的一些细节。&lt;/p&gt;
+&lt;h1&gt;自动化&lt;/h1&gt;
+&lt;p&gt;尽管Pelican命令是生成站点的经典方式，自动工具可以让你的站点生成更加生产线化。在&lt;code&gt;pelican-quickstart&lt;/code&gt;过程中的一个问题是你是否像自动化你的站点生成和发布。如果你的回答是的话，在你的项目的根目录下会生成&lt;code&gt;tasks.py&lt;/code&gt;和&lt;code&gt;Makefile&lt;/code&gt;，这些文件以及在&lt;code&gt;pelican-quickstart&lt;/code&gt;过程中的其他问题的答案给出的信息只是一个起点，而你需要进一步地定制以使其更符合你的使用习惯。如果你发现这些自动化工具中的一个或多个作用有限，你随时可以把这些文件删除而不会影响到经典的&lt;code&gt;pelican&lt;/code&gt;命令。&lt;/p&gt;
+&lt;p&gt;接下来是一些能够“封装”&lt;code&gt;pelican&lt;/code&gt;命令的自动化工具，他们能够简化站点生成、预览和上传的步骤。&lt;/p&gt;
+&lt;h2&gt;Inboke&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.pyinvoke.org/"&gt;Invoke&lt;/a&gt;的优点是它是用Python写的，所以它的使用范围非常广。它的缺点是它需要单独安装。使用下面的命令安装Invoke，如果你的环境要求则需要前缀&lt;code&gt;sudo&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;python -m pip install invoke&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;打开在你的项目根目录下胜场的&lt;code&gt;task.py&lt;/code&gt;。你将会看到很多命令，其中任何一个都能被重命名、删除和/或按你的喜爱定制。使用out-of-the-box配置，你可以通过以下命令生成你的站点：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;invoke build&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你喜欢在每一次改变被探测时都让Pelican自动生成你的站点（这在本地测试时非常方便），使用下面的命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;invoke regenerate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为你的站点提供服务器，从而使它能在&lt;a href="http://localhost:8000/"&gt;http://localhost:8000/&lt;/a&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;invoke serve&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为了使你的浏览器能在每次发生改变时重载你的站点，首先&lt;code&gt;python -m pip install livereload&lt;/code&gt;，然后使用下面的命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;invoke&lt;/span&gt; &lt;span class="n"&gt;livereload&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在&lt;code&gt;pelican-quickstart&lt;/code&gt;过程中如果你对你是否像用SSH上传你的站点这一问题的回答是“是”的话，你可以通过以下命令用SSH发布你的站点：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;invoke publish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这些只是一些默认命令，所以你可以自由的探索&lt;code&gt;task.py&lt;/code&gt;，看看其他可用的命令。更重要的是，一定要按照你自己的需要和偏爱定制&lt;code&gt;task.py&lt;/code&gt;。&lt;/p&gt;</content><category term="Documentation"></category><category term="pelican"></category><category term="documentation"></category></entry><entry><title>Pelican文档（2）——安装Pelican</title><link href="https://dancer.com/pelicanwen-dang-2-an-zhuang-pelican.html" rel="alternate"></link><published>2020-09-15T14:20:00+08:00</published><updated>2020-09-15T14:20:00+08:00</updated><author><name>SunHao</name></author><id>tag:dancer.com,2020-09-15:/pelicanwen-dang-2-an-zhuang-pelican.html</id><summary type="html">&lt;p&gt;这是Pelican英文文档中文翻译的第&lt;strong&gt;二&lt;/strong&gt;部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中时“笔记本”的意思。&lt;/p&gt;</summary><content type="html">&lt;p&gt;Pelican在Python3.6+上运行效果最好，更早版本的Python已经不被支持。&lt;/p&gt;
+&lt;p&gt;你可以通过几种不同的方式安装Pelican。最简单的方式是&lt;a href="https://pip.pypa.io/en/stable/"&gt;pip&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;python -m pip install pelican&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;或者如果你计划使用Markdown：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;python -m pip install "pelican[markdown]"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;（注意有些操作系统会要求你在上述命令前加上&lt;code&gt;sudo&lt;/code&gt;前缀以为整个系统安装Pelican。）&lt;/p&gt;
+&lt;p&gt;尽管以上是最简单的方式，我们最推荐的方式是在安装Pelican之前用&lt;a href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt;为Pelican创建一个虚拟环境。假设你已经安装了&lt;a href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt;，你可以打开一个新的终端并且为Pelican创建一个虚拟环境：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;virtualenv ~/virtualenvs/pelican&lt;/span&gt;
+&lt;span class="err"&gt;cd ~/virtualenvs/pelican&lt;/span&gt;
+&lt;span class="err"&gt;source bin/activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一旦虚拟环境被创建并激活，Pelican可以通过上述&lt;code&gt;python -m pip install pelican&lt;/code&gt;命令安装。如果你有项目的源代码，你也可以选择用distutils方法安装Pelican：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cd path-to-Pelican-source&lt;/span&gt;
+&lt;span class="err"&gt;python setup.py install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你安装了Git并且比起稳定发行版你更想要安装最新但不稳定的版本，使用以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;python -m pip install -e &amp;quot;git+https://github.com/getpelican/pelican.git#egg=pelican&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一旦Pelican安装完成，你可以运行&lt;code&gt;pelican --help&lt;/code&gt;查看基本用法。更多的细节可以查阅&lt;a href="https://docs.getpelican.com/en/stable/publish.html"&gt;发布&lt;/a&gt;章节。&lt;/p&gt;
+&lt;h1&gt;可选的包&lt;/h1&gt;
+&lt;p&gt;如果你计划用&lt;a href="https://pypi.org/project/Markdown/"&gt;Markdown&lt;/a&gt;作为标记格式，你可以安装支持Markdown的Pelican版本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;pelican[markdwon]&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你可以在设置文件里开启印刷增强，但首先你要安装&lt;a href="https://pypi.org/project/typogrify/"&gt;Typogrify&lt;/a&gt;库：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;python -m pip install typogrify&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;依赖关系&lt;/h1&gt;
+&lt;p&gt;当Pelican安装完成时，下面的相关Python包就已经在不需要你参与的情况下自动安装了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;feedgenerator, to generate the Atom&amp;nbsp;feeds&lt;/li&gt;
+&lt;li&gt;jinja2, for templating&amp;nbsp;support&lt;/li&gt;
+&lt;li&gt;pygments, for syntax&amp;nbsp;highlighting&lt;/li&gt;
+&lt;li&gt;docutils, for supporting reStructuredText as an input&amp;nbsp;format&lt;/li&gt;
+&lt;li&gt;pytz, for timezone&amp;nbsp;definitions&lt;/li&gt;
+&lt;li&gt;blinker, an object-to-object and broadcast signaling&amp;nbsp;system&lt;/li&gt;
+&lt;li&gt;unidecode, for &lt;span class="caps"&gt;ASCII&lt;/span&gt; transliterations of Unicode text&amp;nbsp;utilities&lt;/li&gt;
+&lt;li&gt;MarkupSafe, for a markup-safe string&amp;nbsp;implementation&lt;/li&gt;
+&lt;li&gt;python-dateutil, to read the date&amp;nbsp;metadata&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;快速建立你的站点&lt;/h1&gt;
+&lt;p&gt;一旦Pelican安装完成，你可以通过&lt;code&gt;pelican-quickstart&lt;/code&gt;命令创建一个框架项目，这一命令在运行时会向你询问一些关于你的站点的问题：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican-quickstart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果在激活的虚拟环境中运行，&lt;code&gt;pelican-quickstart&lt;/code&gt;将会在&lt;code&gt;$VIRTUAL_ENV/.project&lt;/code&gt;中寻找一个关联项目路径。如果那个文件存在并包含一个有效的目录路径，新的Pelican项目将会被保存在那个位置。否则默认保存在当前的工作目录。在初次调用时指定新项目路径可以使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican-quickstart --path /your/desired/directory&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一旦你回答完所有问题，你的项目将会按照以下的结构组成（除了&lt;em&gt;pages&lt;/em&gt;——在下面的圆括号里——如果你计划创建不依赖时序的内容可以自己添加。）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;yourproject&lt;/span&gt;
+&lt;span class="err"&gt;├─content&lt;/span&gt;
+&lt;span class="err"&gt;│  └─(pages)&lt;/span&gt;
+&lt;span class="err"&gt;├─output&lt;/span&gt;
+&lt;span class="err"&gt;├─task.py&lt;/span&gt;
+&lt;span class="err"&gt;├─makefile&lt;/span&gt;
+&lt;span class="err"&gt;├─pelicanconf.py    #Main settings file&lt;/span&gt;
+&lt;span class="err"&gt;├─publishconf.py    #Settings to use when ready to publish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下一步就是在已经为你创建的&lt;em&gt;content&lt;/em&gt;文件夹里添加内容了。&lt;/p&gt;</content><category term="Documentation"></category><category term="pelican"></category><category term="documentation"></category></entry><entry><title>Pelican文档（1）——快速开始</title><link href="https://dancer.com/pelicanwen-dang-1-kuai-su-kai-shi.html" rel="alternate"></link><published>2020-09-14T10:20:00+08:00</published><updated>2020-09-14T10:20:00+08:00</updated><author><name>SunHao</name></author><id>tag:dancer.com,2020-09-14:/pelicanwen-dang-1-kuai-su-kai-shi.html</id><summary type="html">&lt;p&gt;这是Pelican英文文档中文翻译的第&lt;strong&gt;一&lt;/strong&gt;部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中是“笔记本”的意思。&lt;/p&gt;</summary><content type="html">&lt;p&gt;我们强烈建议通读所有的文档，但是对实在没有耐心的人，接下来是一些快速开始的步骤。&lt;/p&gt;
+&lt;h1&gt;安装&lt;/h1&gt;
+&lt;p&gt;在Python 3.6+版本中安装Pelican（如果需要也可以选择同时安装Markdown）可以通过在你喜爱的终端里运行以下命令，有可能需要&lt;code&gt;sodo&lt;/code&gt;给与权限：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;python -m pip install "pelican[markdown]"&lt;/code&gt;&lt;/p&gt;
+&lt;h1&gt;创建一个项目&lt;/h1&gt;
+&lt;p&gt;首先给你的项目选择一个名称，并为你的站点创建一个命名合适的目录，然后跳转到这个目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;mkdir -p ~/projects/yoursite&lt;/span&gt;
+&lt;span class="err"&gt;cd ~/projects/yoursite&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过&lt;code&gt;pelican-quickstart&lt;/code&gt;命令创建一个框架程序，这一命题的运行方式是询问一些关于你的站点的问题：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican-quickstart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;那些有默认值的问题都将默认值标记在了括号里，你可以自由地选择用敲击回车键的方式接受这些默认值。当想你询问URL前缀时，请键入你的域名（例如&lt;code&gt;https://example.com&lt;/code&gt;）。&lt;/p&gt;
+&lt;h1&gt;创建一篇文章&lt;/h1&gt;
+&lt;p&gt;在你创建一些内容之前Pelican是无法运行的。有你喜爱的文本编辑器按一下的内容创建你的第一篇文章：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="n"&gt;First&lt;/span&gt; &lt;span class="n"&gt;Review&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Review&lt;/span&gt;
+
+&lt;span class="n"&gt;Following&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;review&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="n"&gt;favorite&lt;/span&gt; &lt;span class="n"&gt;mechanical&lt;/span&gt; &lt;span class="n"&gt;keyboard&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;给予这篇示例文章Markdown的格式，并且保存为&lt;code&gt;~/prjects/yoursite/content/keyboard-review.md&lt;/code&gt;&lt;/p&gt;
+&lt;h1&gt;生成你的站点&lt;/h1&gt;
+&lt;p&gt;在你的站点的根目录下运行&lt;code&gt;pelican&lt;/code&gt;命令来生成你的站点：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican content&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你的站点现在已经在&lt;code&gt;output&lt;/code&gt;目录下生成了。（你也许会看到一个和反馈有关的警告，但是这是在本地运行时的正常现象，并且可以暂时忽略。）&lt;/p&gt;
+&lt;h1&gt;预览你的站点&lt;/h1&gt;
+&lt;p&gt;打开一个新的终端，进入你的项目的根目录，运行以下命令启动Pelican的web服务器：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;pelican --listen&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;用你的浏览器访问http://localhost:8000/&amp;nbsp;来预览你的站点。&lt;/p&gt;
+&lt;p&gt;继续阅读文档的其他章节可以获得更多细节，并且浏览Pelican&amp;nbsp;wiki的指导页面可以获取社区中的相关教程。&lt;/p&gt;</content><category term="Documentation"></category><category term="pelican"></category><category term="documentation"></category></entry></feed>

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = 'SunHao'
-SITENAME = 'Dancer'
+SITENAME = 'Do you want to dance,too?'
 SITEURL = ''
 
 PATH = 'content'
@@ -32,3 +32,6 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+DISPLAY_PAGES_ON_MENU = True
+TYPOGRIFY = True
