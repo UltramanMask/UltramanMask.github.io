@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Pelican文档（3）——撰写内容</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="这是Pelican英文文档中文翻译的第一部分。Pelican是一个基于Python的静态网页生成器，它的名字来源于calepin的相同字母异序词，它在法语中是“笔记本”的意思。" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Dancer</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li class="active"><a href="/category/documentation.html">Documentation</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/pelicanwen-dang-3-zhuan-xie-nei-rong.html" rel="bookmark"
+           title="Permalink to Pelican文档（3）——撰写内容">Pelican文档（3）——撰写内容</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-09-23T18:00:00+08:00">
+                Published: 周三 23 九月 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/sunhao.html">SunHao</a>
+        </address>
+<p>In <a href="/category/documentation.html">Documentation</a>.</p>
+<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/documentation.html">documentation</a> </p>
+</footer><!-- /.post-info -->      <h1>文章和页面</h1>
+<p>Pelican把“文章”看成是依赖时序的内容，比如说blog中的投稿，所以它将每一篇文章和一个时间相联系。</p>
+<p>“页面”背后的意思是他们通常不是临时的，而且被用于那些不会经常修改的内容（比如说“About”或者“Contact”页面）。</p>
+<h1>文件元数据</h1>
+<p>Pelican尽量做到足够智能以便从文件系统（比如说关于你文章的分类）中获取它需要的信息，但是有些信息还是需要你在文件中以元数据的形式给出。</p>
+<p>如果你是用reStructuredText格式撰写你的内容，你可以在文本文件里用下面的语法提供这些元数据信息（文件后缀名为<code>.rst</code>）：</p>
+<div class="highlight"><pre><span></span><span class="n">My</span> <span class="n">super</span> <span class="n">title</span>
+<span class="o">##############</span>
+
+<span class="p">:</span><span class="nb">date</span><span class="p">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="p">:</span><span class="mi">20</span>
+<span class="p">:</span><span class="n">modified</span><span class="p">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">04</span> <span class="mi">18</span><span class="p">:</span><span class="mi">40</span>
+<span class="p">:</span><span class="n">tags</span><span class="p">:</span> <span class="n">thats</span><span class="p">,</span> <span class="n">awesome</span>
+<span class="p">:</span><span class="n">category</span><span class="p">:</span> <span class="n">yeah</span>
+<span class="p">:</span><span class="n">slug</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">super</span><span class="o">-</span><span class="n">post</span>
+<span class="p">:</span><span class="n">authors</span><span class="p">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="p">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
+<span class="p">:</span><span class="n">summary</span><span class="p">:</span> <span class="n">Short</span> <span class="k">version</span> <span class="k">for</span> <span class="k">index</span> <span class="k">and</span> <span class="n">feeds</span>
+</pre></div>
+
+
+<p>Author和tag列表可以用分号隔开，这样你的作者和标签内容就可以包含逗号了：</p>
+<div class="highlight"><pre><span></span><span class="p">:</span><span class="n">tags</span><span class="p">:</span> <span class="n">pelican</span><span class="p">,</span> <span class="n">publishing</span> <span class="k">tool</span><span class="p">;</span> <span class="n">pelican</span><span class="p">,</span> <span class="n">bird</span>
+<span class="p">:</span><span class="n">authors</span><span class="p">:</span> <span class="n">Metaireau</span><span class="p">,</span> <span class="n">Alexis</span><span class="p">;</span> <span class="n">Doyle</span><span class="p">,</span> <span class="n">Conan</span>
+</pre></div>
+
+
+<p>Pelican包含一个支持HTML标签<code>abbr</code>的reStructureedText的扩展，你可以在你的投稿中写上下面的内容启用它：</p>
+<div class="highlight"><pre><span></span><span class="err">This will be turned into :abbr:`HTML (HyperText Markup Language)`.</span>
+</pre></div>
+
+
+<p>你也可以使用Markdown语法（文件后缀名为<code>.md</code>，<code>markdwon</code>，<code>mkd</code>或者<code>.mdown</code>）。生成Markdown首先要求你明确安装了<a href="https://github.com/Python-Markdown/markdown">Python-Markdown</a>包，这可以通过<code>pip install Markdwon</code>命令完成。</p>
+<p>Pelican也支持<a href="https://python-markdown.github.io/extensions/">Markdown Extensions</a>，如果他们没有被包含在默认的<code>Markdown</code>包内你可以单独安装，他们可以用<code>MARKDOWN</code>设置进行配置和加载。</p>
+<p>Markdwon投稿的元数据语法应该遵循以下格式：</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="kd">super</span> <span class="n">title</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span> <span class="mi">10</span><span class="o">:</span><span class="mi">00</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span> <span class="mi">19</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span><span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span><span class="n">pelican</span><span class="o">,</span> <span class="n">publishing</span>
+<span class="n">Slug</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="kd">super</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Authors</span><span class="o">:</span> <span class="n">Alexis</span> <span class="n">Metaireau</span><span class="o">,</span> <span class="n">Conan</span> <span class="n">Doyle</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">Short</span> <span class="n">version</span> <span class="k">for</span> <span class="n">index</span> <span class="n">and</span> <span class="n">feeds</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">my</span> <span class="kd">super</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+</pre></div>
+
+
+<p>你也可以为了自己使用方便定义自己的元数据关键词（只要他们和保留的元数据关键词不冲突）。下面的表包含了所有的保留元数据关键词：</p>
+<table>
+<thead>
+<tr>
+<th>元数据</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>文章或页面的标题</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>公开时间（<code>YYYY-MM-DD HH:SS</code>）</td>
+</tr>
+<tr>
+<td><code>modified</code></td>
+<td>修改时间（<code>YYYY-MM-DD HH:SS</code>）</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>内容的标签，用逗号分开</td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>内容的关键词，用逗号分开（只适用于HTML内容）</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>内容的分类（只能有一个）</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>URLs和翻译的标识</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>内容的作者，只能写一个</td>
+</tr>
+<tr>
+<td><code>authors</code></td>
+<td>内容的作者，可以写多个</td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td>内容所在页面的简单描述</td>
+</tr>
+<tr>
+<td><code>lang</code></td>
+<td>内容的语言ID（<code>en</code>，<code>fr</code>等）</td>
+</tr>
+<tr>
+<td><code>traslation</code></td>
+<td>如果内容是作者的翻译（<code>true</code>或<code>false</code>）</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>内容的状态：<code>draft</code>，<code>hidden</code>或<code>published</code></td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td>用来生成内容的模板名字（没有拓展）</td>
+</tr>
+<tr>
+<td><code>save_as</code></td>
+<td>以相对路径保存内容</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>这一文章/页面的URL</td>
+</tr>
+</tbody>
+</table>
+<p>读者可以通过插件添加额外的格式（比如说<a href="https://www.methods.co.nz/cgi-sys/suspendedpage.cgi">AsciiDoc</a>），详情参考<a href="https://github.com/getpelican/pelican-plugins">pelican-plugins</a>仓库。</p>
+<p>Pelican也能够处理以<code>.html</code>和<code>.htm</code>为后缀的HTML文件。Pelican以一种非常直接的方式解释HTML，从<code>meta</code>标签中读取元数据，从<code>title</code>标签中读取标题，从<code>body</code>标签中读取主体：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>My super title<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;tags&quot;</span> <span class="na">content=</span><span class="s">&quot;thats, awesome&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;date&quot;</span> <span class="na">content=</span><span class="s">&quot;2012-07-09 22:28&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;modified&quot;</span> <span class="na">content=</span><span class="s">&quot;2012-07-10 20:14&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span> <span class="na">content=</span><span class="s">&quot;yeah&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;authors&quot;</span> <span class="na">content=</span><span class="s">&quot;Alexis Métaireau, Conan Doyle&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;summary&quot;</span> <span class="na">content=</span><span class="s">&quot;Short version for index and feeds&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        This is the content of my super blog post.
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>HTML中有一个元数据比较特殊：标签可以用<code>tags</code>元数据定义，就像Pelican的标准用法一样，也可以用<code>keywords</code>元数据定义，就像HTML的标准用法一样。这两种用法可以交替使用。</p>
+<p>需要注意的是，除了标题，所有元数据都不是必须的：如果时间没有给出，并且<code>DEFAULT_DATE</code>被设置为<code>'fs'</code>，Pelican将会采用文件的“mtime”时间戳，而分类可以用文件所在的文件夹决定。比如说一个位于<code>python/foobar/myfoobar.rst</code>的文件将会被赋予<code>foobar</code>的分类。如果你想按照其他的方式组织你的文件，而文件夹不是一个合适的分类名，你可以在设置里把<code>USE_FOLDER_AS_CATEGORY</code>设为<code>False</code>。当句法分析时间在页面元数据中给出，Pelican支持W3C的<a href="https://www.w3.org/TR/NOTE-datetime">suggested subset <span class="caps">ISO</span> 8601</a>。</p>
+<p>所以标题是唯一要求的元数据。如果你觉得这样很烦，别担心。除了每次都在元数据里给出标题，你还可以用内容的源文件名作为标题。比如说，一个文件名为<code>Publishing via Pelican.md</code>的Markdown文件将会自动获得标题<em>Publishing via Pelican</em>。如果你更喜欢这种方式，可以在设置文件里加上这样的内容：</p>
+<div class="highlight"><pre><span></span><span class="err">FILENAME_METADATE = `(?P&lt;title&gt;.*)`</span>
+</pre></div>
+
+
+<p><code>modified</code>应该是你最后一次更新文章的时间，而且是你没有指明<code>date</code>时的默认值。你可以在内容里显示<code>modified</code>。当你修改文章后把<code>modiified</code>设为当前时间，订阅读者的相关订阅条款会自动更新。</p>
+<p><code>authors</code>是一个以逗号分隔的文章作者的列表，如果只有一个作者你可以用<code>author</code>。</p>
+<p>如果你在一次投稿中不明确给出摘要，<code>SUMMARY_MAX_LENGTH</code>设置可以被用来设置从文章开头截取多少字作为摘要。</p>
+<p>你还可以从通过<code>FILENAME_METADATA</code>设置从文件名中获取其他的元数据。文件名中配对的数据将会被设为元数据对象。<code>FILENAME_METADATA</code>的默认值是只从文件名中获取日期。比如说，如果你想从文件名同时获取日期和slug，你可以将其设置为<code>'(?P&lt;date&gt;\d{4}-\d{2}-\d{2})_(?P&lt;slug&gt;.*)'</code>。</p>
+<p>请记住，文件内可用的元数据对从文件名中获取的元数据具有优先权。</p>
+<h1>页面</h1>
+<p>如果你在content文件夹内创建了一个名为<code>pages</code>的文件夹，所有其中的文件都会被用来生成静态页面，比如说<strong>About</strong>或<strong>Contact</strong>页面。（见下面的文件系统配置例子。）</p>
+<p>你可以用<code>DSIPLAY_PAGES_ON_MENU</code>设置来控制是否将这些页面都显示在主页的导航菜单中。（默认值是<code>True</code>。）</p>
+<p>如果你不想把某些页面显示在导航栏中，就在内容的元数据中添加<code>status: hidden</code>。这对于为你的站点创建错误页面很有用。</p>
+<h1>静态内容</h1>
+<p>静态内容是除了文章和页面之外的内容，它们不需要处理而是直接复制到output文件夹中。你可以用<code>pelicanconf.py</code>文件中的<code>STATIC_PATHS</code>设置控制复制哪些静态文件。Pelican的默认设置是<code>image</code>目录，但是其他的必须要手动添加。如此之外其他需要明确关联的静态文件包括（见下文）</p>
+<h2>相同文件夹内的混合内容</h2>
+<p>从Pelican3.5开始，静态文件可以安全地和页面源文件共享同一个目录，而不会把页面源文件暴露在生成的站点中。任意一个这样的目录都要同时被加入<code>STATIC_PATHS</code>和<code>PAGE_PATH</code>（或<code>STATIC_PATHS</code>和<code>ARTICLE_PATHS</code>）中。Pelican将会正常地识别和处理页面源文件，如果其他文件都在一个保存静态文件的单独目录内，Pelican会把剩余的文件复制到输出中。</p>
+<p>注意：把静态文件和内容源文件放在相同的源目录内并不能保证他们最终将会出现在生成的站点中的同一位置。做到这一点的最简单方法时用<code>{attach}</code>链接语法（下面会说）。除此之外，<code>STATIC_SAVE_AS</code>，<code>PAGE_SAVE_AS</code>和<code>ARTICLE_SAVE_AS</code>设置（和对应的<code>*_URL</code>设置）能够被用来设置将不同种类的文件保存在一起，就像他们在Pelican早期版本中的作用一样。</p>
+<h2>内部内容之间的链接</h2>
+<p>从Pelican3.1开始，可以将站点内的链接在内容文件夹内进行链接，而不用在生成的站点的文件夹内进行链接。这使得我们从当前的投稿链接到另一个可能与之相关的投稿更加简单（不需要知道被链接的内容在被生成的站点内的位置）。</p>
+<p>为了链接内部的内容（<code>content</code>目录内的文件），可以使用下面的语法链接到目标文件：<code>{filename}path/to/file</code>。注意：用来分隔目录层级的反斜杠<code>/</code>在所有操作系统内都一样，包括Windows。</p>
+<p>比如说，一个Pelican项目可能具有如下的结构：</p>
+<div class="highlight"><pre><span></span><span class="err">website/</span>
+<span class="err">├── content</span>
+<span class="err">│   ├── category/</span>
+<span class="err">│   │   └── article1.rst</span>
+<span class="err">│   ├── article2.md</span>
+<span class="err">│   └── pages</span>
+<span class="err">│       └── about.md</span>
+<span class="err">└── pelican.conf.py</span>
+</pre></div>
+
+
+<p>在这个例子里，<code>article.rst</code>可以这么写：</p>
+<div class="highlight"><pre><span></span><span class="n">The</span> <span class="k">first</span> <span class="n">article</span>
+<span class="o">#################</span>
+
+<span class="p">:</span><span class="nb">date</span><span class="p">:</span> <span class="mi">2012</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">10</span><span class="p">:</span><span class="mi">02</span>
+
+<span class="n">See</span> <span class="n">below</span> <span class="n">intra</span><span class="o">-</span><span class="n">site</span> <span class="n">link</span> <span class="n">examples</span> <span class="k">in</span> <span class="n">reStructuredText</span> <span class="n">format</span><span class="p">.</span>
+
+<span class="o">`</span><span class="n">a</span> <span class="n">link</span> <span class="k">relative</span> <span class="k">to</span> <span class="n">the</span> <span class="k">current</span> <span class="n">file</span> <span class="o">&lt;</span><span class="err">{</span><span class="n">filename</span><span class="err">}</span><span class="p">..</span><span class="o">/</span><span class="n">article2</span><span class="p">.</span><span class="n">md</span><span class="o">&gt;`</span><span class="n">_</span>
+<span class="o">`</span><span class="n">a</span> <span class="n">link</span> <span class="k">relative</span> <span class="k">to</span> <span class="n">the</span> <span class="n">content</span> <span class="n">root</span> <span class="o">&lt;</span><span class="err">{</span><span class="n">filename</span><span class="err">}</span><span class="o">/</span><span class="n">article2</span><span class="p">.</span><span class="n">md</span><span class="o">&gt;`</span><span class="n">_</span>
+</pre></div>
+
+
+<p>而<code>article2.md</code>可以这么写：</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">The</span> <span class="n">second</span> <span class="n">article</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2012</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">10</span><span class="o">:</span><span class="mi">02</span>
+
+<span class="n">See</span> <span class="n">below</span> <span class="n">intra</span><span class="o">-</span><span class="n">site</span> <span class="n">link</span> <span class="n">examples</span> <span class="k">in</span> <span class="n">Markdown</span> <span class="n">format</span><span class="o">.</span>
+
+<span class="o">[</span><span class="n">a</span> <span class="n">link</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">file</span><span class="o">]({</span><span class="n">filename</span><span class="o">}</span><span class="n">category</span><span class="o">/</span><span class="n">article1</span><span class="o">.</span><span class="na">rst</span><span class="o">)</span>
+<span class="o">[</span><span class="n">a</span> <span class="n">link</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">the</span> <span class="n">content</span> <span class="n">root</span><span class="o">]({</span><span class="n">filename</span><span class="o">}/</span><span class="n">category</span><span class="o">/</span><span class="n">article1</span><span class="o">.</span><span class="na">rst</span><span class="o">)</span>
+</pre></div>
+
+
+<h2>链接到静态文件</h2>
+<p>你可以用<code>{static}path/to/file</code>链接到静态内容。被这一语法链接的文件将会自动被复制到输出目录里，即使包含他们的源目录没有被包含在项目设置文件<code>pelicanconf.py</code>中的<code>STATIC-PATH</code>里。</p>
+<p>比如说，你个项目的内容目录可能有如下的结构：</p>
+<div class="highlight"><pre><span></span><span class="err">content</span>
+<span class="err">├── images</span>
+<span class="err">│   └── han.jpg</span>
+<span class="err">├── pdfs</span>
+<span class="err">│   └── menu.pdf</span>
+<span class="err">└── pages</span>
+<span class="err">    └── test.md</span>
+</pre></div>
+
+
+<p><code>test.md</code>可以被写成：</p>
+<div class="highlight"><pre><span></span><span class="o">!</span><span class="p">[</span><span class="n">Alt</span> <span class="n">Text</span><span class="p">]({</span><span class="k">static</span><span class="p">}</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">han</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span>
+<span class="p">[</span><span class="n">Our</span> <span class="n">Menu</span><span class="p">]({</span><span class="k">static</span><span class="p">}</span><span class="o">/</span><span class="n">pdfs</span><span class="o">/</span><span class="n">menu</span><span class="p">.</span><span class="n">pdf</span><span class="p">)</span>
+</pre></div>
+
+
+<p>站点生成时将会把<code>han.jpg</code>复制到<code>output/images/han.jpg</code>，把<code>menu.pdf</code>复制到<code>output/pdfs/menu.pdf</code>。</p>
+<p>如果你使用<code>{static}</code>链接一个文章或页面，将会链接到它的源代码。</p>
+<h2>绑定静态文件</h2>
+<p>从Pelican3.5开始，静态文件可以通过<code>{attach}path/to/file</code>将静态文件“绑定”到一个页面或文章。这一命令和<code>{static}</code>的语法很像，但是它把静态文件和链接它的文件放在输出目录的相同位置。如果最初的静态文件位于链接它的源文件的一个子目录里，这一关系将会在输出中保留。否则它将会和链接它的文件位于同一目录下。</p>
+<p>这一命令只对静态文件有效。</p>
+<p>比如说，一个项目的内容目录可能具有如下的结构：</p>
+<div class="highlight"><pre><span></span><span class="n">content</span>
+<span class="err">├──</span> <span class="n">blog</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">icons</span>
+<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">icon</span><span class="o">.</span><span class="n">png</span>
+<span class="err">│</span>   <span class="err">├──</span> <span class="n">photo</span><span class="o">.</span><span class="n">jpg</span>
+<span class="err">│</span>   <span class="err">└──</span> <span class="n">testpost</span><span class="o">.</span><span class="n">md</span>
+<span class="err">└──</span> <span class="n">downloads</span>
+    <span class="err">└──</span> <span class="n">archive</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+
+
+<p><code>pelicanconf.py</code>将会包括：</p>
+<div class="highlight"><pre><span></span><span class="err">PATH = &#39;content&#39;</span>
+<span class="err">ARTICLE_PATHS = [&#39;blog&#39;]</span>
+<span class="err">ARTICLE_SAVE_AS = &#39;{date:%Y}/{slug}.html&#39;</span>
+<span class="err">ARTICLE_URL = &#39;{date:%Y}/{slug}.html&#39;</span>
+</pre></div>
+
+
+<p><code>testpost.md</code>将会包括：</p>
+<div class="highlight"><pre><span></span><span class="nl">Title</span><span class="p">:</span> <span class="n">Test</span> <span class="n">Post</span>
+<span class="nl">Category</span><span class="p">:</span> <span class="n">test</span>
+<span class="nl">Date</span><span class="p">:</span> <span class="mi">2014-10-31</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">Icon</span><span class="p">]({</span><span class="n">attach</span><span class="p">}</span><span class="n">icons</span><span class="o">/</span><span class="n">icon</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+<span class="o">!</span><span class="p">[</span><span class="n">Photo</span><span class="p">]({</span><span class="n">attach</span><span class="p">}</span><span class="n">photo</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span>
+<span class="p">[</span><span class="n">Downloadable</span> <span class="n">File</span><span class="p">]({</span><span class="n">attach</span><span class="p">}</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">archive</span><span class="p">.</span><span class="n">zip</span><span class="p">)</span>
+</pre></div>
+
+
+<p>生成站点时产生的输出目录具有如下的结构：</p>
+<div class="highlight"><pre><span></span><span class="err">output</span>
+<span class="err">└── 2014</span>
+<span class="err">    ├── archive.zip</span>
+<span class="err">    ├── icons</span>
+<span class="err">    │   └── icon.png</span>
+<span class="err">    ├── photo.jpg</span>
+<span class="err">    └── test-post.html</span>
+</pre></div>
+
+
+<p>注意，用<code>{attach}</code>链接的文件最终或者会和输出的文章位于同一目录，或者位于输出文章所在目录的子目录中。</p>
+<p>如果一个文件被链接多次，<code>{attach}</code>的改变位置的特性只有在这些链接的第一个中才会被处理。第一次链接之后，Pelican将会把<code>attach</code>当成<code>{static}</code>处理。这避免了破坏之前处理的链接。</p>
+<p><strong>当同时有多个文件都链接同一个文件时一定要小心</strong>：因为第一次链接将会决定被链接文件的最终位置，而Pelican并不会区分文件被处理的顺序，被链接到多个文件的文件有可能在不同的编译之后位于不同的位置。（这在现实中是否会发生取决于操作系统，文件系统，Pelican的版本和项目中增加、修改或删除的文件。）那么链接到文件之前旧的位置的链接就会失效。所以明智的做法是只有当链接到同一个文件的多个链接文件位于同一目录里时才用<code>{attach}</code>。在这一条件下，文件的输出位置不会在将来的编译中改变。对于没有这么做的情况，可以考虑用<code>{static}</code>而不是<code>{attach}</code>，并且用项目的<code>STATIC_SAVE_AS</code>和<code>STATIC_URL</code>设置决定输出文件的位置。</p>
+<p>注意：当使用<code>{attach}</code>的时候，<code>*_URL</code>/<code>*_SAVE_AS</code>设置里的所有父目录都要互相匹配。见<a href="https://docs.getpelican.com/en/stable/settings.html#url-settings">URL设置</a>。</p>
+<h2>链接作者，分类，索引和标签</h2>
+<p>你可以用<code>{author}name</code>，<code>{category}foobar</code>，<code>{index}</code>和<code>{tag}tagname</code>语法链接作者，分类，索引和标签。</p>
+<h2>极不推荐的内部链接语法</h2>
+<p>为了和更早的版本相比较，Pelican在内部链接中除了花括号(<code>{}</code>)仍然支持竖括号（<code>||</code>）。比如说：<code>|filename|an_article.rst</code>，<code>|tag|tagname</code>，<code>|category|foobar</code>。将<code>||</code>换成<code>{}</code>是为了避免和Markdown扩展或reST命令的冲突。相似地，Pelican仍然支持用<code>{filename}</code>链接静态内容。语法变为<code>{static}</code>是为了既能在生成的文章和页面之间，也能在他们的静态源文件之间链接。</p>
+<p>对旧语法的支持最终会被删除。</p>
+<h2>包含其他文件</h2>
+<p>Markdown和reStructuredText都维持提供了机制。</p>
+<p>下面是<strong>reStructuredText</strong>用<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#include">the include directive</a>命令的几个例子：</p>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> file.rst
+</pre></div>
+
+
+<p>包含一个文件里由两个标识符界定的部分，比如说C++文件（按照行号分隔也是可以的）：</p>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> main.cpp
+    <span class="nc">:code:</span> C++
+    <span class="nc">:start-after:</span> // begin
+    <span class="nc">:end-before:</span> // end
+</pre></div>
+
+
+<p>包含一个未经处理的HTML文件（或者一个inline <span class="caps">SVG</span>）并且将它不经处理直接输出：</p>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+    <span class="nc">:file:</span> table,html
+</pre></div>
+
+
+<p>至于<strong>Markdown</strong>，必须要依赖于拓展，比如说用<a href="https://github.com/neurobin/mdx_include">mdx_include plugin</a>：</p>
+<div class="highlight"><pre><span></span><span class="err">```html</span>
+<span class="err">{! template.html !}</span>
+<span class="err">```</span>
+</pre></div>
+
+
+<h1>导入一个存在的站点</h1>
+<p>使用简单的脚本就可以将你在Wordpress，Tumblr，Dotclear和RSS feeds的站点导入Pelican。见<a href="https://docs.getpelican.com/en/stable/importer.html#import">Importing an existing site</a>。</p>
+<h1>翻译</h1>
+<p>翻译文章是可能的，为此你需要为你的文章/页面添加一个<code>lang</code>元数据，并且设置好<code>DEFAULT_LANG</code>（它的默认值是英语[en]）。这些都设置好了之后，只有拥有默认语言的文章将会被列出来，而且每一篇文章都会有一个可用的翻译版本的列表。</p>
+<p>注意：Pelican的核心功并不能为每一中语言的翻译版本都生成子站点（例如<code>example.com/de</code>），这样的高级功能可以用<a href="https://github.com/getpelican/pelican-plugins/tree/master/i18n_subsites">i18n_subsites plugin</a>实现。</p>
+<p>Pleican默认使用文章的URL“slug”来确定是是否两篇或多篇文章是彼此的翻译版本。（这可以通过<code>ARTICLE_TRANSLATION_ID</code>设置改变。）slug可以在文件的元数据中设置；如果没有明确设置，Pelican将会从文章的标题中自动生成slug。</p>
+<p>下面是两个例子，一个是英语一个是法语。</p>
+<p>英语文章：</p>
+<div class="highlight"><pre><span></span><span class="n">Foobar</span> <span class="k">is</span> <span class="k">not</span> <span class="n">dead</span>
+<span class="o">##################</span>
+
+<span class="p">:</span><span class="n">slug</span><span class="p">:</span> <span class="n">foobar</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="k">not</span><span class="o">-</span><span class="n">dead</span>
+<span class="p">:</span><span class="n">lang</span><span class="p">:</span> <span class="n">en</span>
+
+<span class="n">That</span><span class="err">&#39;</span><span class="n">s</span> <span class="k">true</span><span class="p">,</span> <span class="n">foobar</span> <span class="k">is</span> <span class="n">still</span> <span class="n">alive</span><span class="o">!</span>
+</pre></div>
+
+
+<p>法语文章：</p>
+<div class="highlight"><pre><span></span><span class="n">Foobar</span> <span class="n">n</span><span class="err">&#39;</span><span class="n">est</span> <span class="n">pas</span> <span class="n">mort</span> <span class="o">!</span>
+<span class="o">#######################</span>
+
+<span class="p">:</span><span class="n">slug</span><span class="p">:</span> <span class="n">foobar</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="k">not</span><span class="o">-</span><span class="n">dead</span>
+<span class="p">:</span><span class="n">lang</span><span class="p">:</span> <span class="n">fr</span>
+
+<span class="n">Oui</span> <span class="n">oui</span><span class="p">,</span> <span class="n">foobar</span> <span class="n">est</span> <span class="n">toujours</span> <span class="n">vivant</span> <span class="o">!</span>
+</pre></div>
+
+
+<p>尽管文章不同，但是你可以看出来两文章的slug是相同的，所以它被当做是标识符。如果你不喜欢这样明确定义，你必须保证翻译文章和原文章的标题一致，因为slug将会根据文章标题自动生成。</p>
+<p>如果你不希望某一篇文章的原版本被<code>DEFAULT_LANG</code>探测为翻译版本，你可以用<code>translation</code>元数据标明哪一篇是翻译版本：</p>
+<div class="highlight"><pre><span></span><span class="n">Foobar</span> <span class="k">is</span> <span class="k">not</span> <span class="n">dead</span>
+<span class="o">##################</span>
+
+<span class="p">:</span><span class="n">slug</span><span class="p">:</span> <span class="n">foobar</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="k">not</span><span class="o">-</span><span class="n">dead</span>
+<span class="p">:</span><span class="n">lang</span><span class="p">:</span> <span class="n">en</span>
+<span class="p">:</span><span class="k">translation</span><span class="p">:</span> <span class="k">true</span>
+
+<span class="n">That</span><span class="err">&#39;</span><span class="n">s</span> <span class="k">true</span><span class="p">,</span> <span class="n">foobar</span> <span class="k">is</span> <span class="n">still</span> <span class="n">alive</span><span class="o">!</span>
+</pre></div>
+
+
+<h1>语法高亮</h1>
+<p>Pelican能够为你的代码块提供带颜色的语法高亮。为了做到这一点你可以在你的内容文件里采取以下约定。</p>
+<p>对于reStructuredText，使用<code>code-block</code>指令来指明需要高亮的代码类型（在这些例子里，我们使用<code>python</code>）：</p>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
+
+   print(&quot;Pelican is a static site generator.&quot;)
+</pre></div>
+
+
+<p>对于Markdown，需要使用<a href="https://python-markdown.github.io/extensions/code_hilite/#syntax">CodeHilite extension</a>，需要在代码块的上方将语言标识符和代码使用相同的缩进：</p>
+<div class="highlight"><pre><span></span><span class="n">There</span> <span class="k">are</span> <span class="n">two</span> <span class="n">ways</span> <span class="k">to</span> <span class="n">specify</span> <span class="n">the</span> <span class="n">identifier</span><span class="p">:</span>
+
+    <span class="p">:::</span><span class="n">python</span>
+    <span class="n">print</span><span class="p">(</span><span class="ss">&quot;The triple-colon syntax will *not* show line numbers.&quot;</span><span class="p">)</span>
+
+<span class="k">To</span> <span class="n">display</span> <span class="n">line</span> <span class="n">numbers</span><span class="p">,</span> <span class="n">use</span> <span class="n">a</span> <span class="n">path</span><span class="o">-</span><span class="k">less</span> <span class="n">shebang</span> <span class="k">instead</span> <span class="k">of</span> <span class="n">colons</span><span class="p">:</span>
+
+    <span class="o">#!</span><span class="n">python</span>
+    <span class="n">print</span><span class="p">(</span><span class="ss">&quot;The path-less shebang syntax *will* show line numbers.&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>知名的标识符（如<code>python</code>，<code>ruby</code>）应该和<a href="https://pygments.org/docs/lexers/">list of available lexers</a>中给出的一致。</p>
+<p>当使用reStructuredText时，代码块指令的可用参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Valid values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchorlinenos</td>
+<td>N/A</td>
+<td>If present wrap line numbers in <a> tags.</td>
+</tr>
+<tr>
+<td>classprefix</td>
+<td>string</td>
+<td>String to prepend to token class names</td>
+</tr>
+<tr>
+<td>hl_lines</td>
+<td>numbers</td>
+<td>List of lines to be highlighted, where line numbers to highlight are separated by a space. This is similar to <code>emphasize-lines</code> in Sphinx, but it does not support a range of line numbers separated by a hyphen, or comma-separated line numbers.</td>
+</tr>
+<tr>
+<td>lineanchors</td>
+<td>string</td>
+<td>Wrap each line in an anchor using this string and -linenumber.</td>
+</tr>
+<tr>
+<td>linenos</td>
+<td>string</td>
+<td>If present or set to “table” output line numbers in a table, if set to “inline” output them inline. “none” means do not output the line numbers for this table.</td>
+</tr>
+<tr>
+<td>linenospecial</td>
+<td>number</td>
+<td>If set every nth line will be given the ‘special’ css class.</td>
+</tr>
+<tr>
+<td>linenostart</td>
+<td>number</td>
+<td>Line number for the first line.</td>
+</tr>
+<tr>
+<td>linenostep</td>
+<td>number</td>
+<td>Print every nth line number.</td>
+</tr>
+<tr>
+<td>lineseparator</td>
+<td>string</td>
+<td>String to print between lines of code, ‘n’ by default.</td>
+</tr>
+<tr>
+<td>linespans</td>
+<td>string</td>
+<td>Wrap each line in a span using this and -linenumber.</td>
+</tr>
+<tr>
+<td>noblockground</td>
+<td>N/A</td>
+<td>If set do not output background color for the wrapping element.</td>
+</tr>
+<tr>
+<td>nowrap</td>
+<td>N/A</td>
+<td>If set do not wrap the tokens at all.</td>
+</tr>
+<tr>
+<td>tagsfile</td>
+<td>string</td>
+<td>ctags file to use for name definitions.</td>
+</tr>
+<tr>
+<td>tagurlformat</td>
+<td>string</td>
+<td>format for the ctag links.</td>
+</tr>
+</tbody>
+</table>
+<p>注意，根据不同的版本，Pygments模块可能不支持上说所有的选项。各个选项的更多细节可以参考<a href="https://pygments.org/docs/formatters/">Pygments documentation</a>的<em>HtmlFormatter</em>章节。</p>
+<p>比如说，下面的代码块启用了行号，从153开始，并且在Pygments CSS类之前设置了前缀<em>pgcss</em>使得名字更加特别从而避免了可能的CSS冲突：</p>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> identifier
+    <span class="nc">:classprefix:</span> pgcss
+    <span class="nc">:linenos:</span> table
+    <span class="nc">:linenostart:</span> 153
+
+   &lt;indented code block goes here&gt;
+</pre></div>
+
+
+<p>也可以在Pelican的设置文件里设置<code>PYGMENTS_RST_OPTIONS</code>变量来包含你想在每一个代码块中自动应用的选项。</p>
+<p>比如说，如果你想在每一个代码块中都启用行号和一个CSS前缀，你可以将这一变量设置为：</p>
+<div class="highlight"><pre><span></span><span class="err">PYGMENTS_RST_OPTIONS = {&#39;classprefix&#39;: &#39;pgcss&#39;, &#39;linenos&#39;: &#39;table&#39;}</span>
+</pre></div>
+
+
+<p>如果在特定代码块中标明了别的设置，那么这一设置将会覆盖设置文件里的默认设置。</p>
+<h1>发布草稿</h1>
+<p>如果你想把某一文章或页面作为草稿发布（比如说在正式发布前让朋友检查一下），你可以在元数据里添加<code>Status: draft</code>。这篇文章会输出到<code>drafts</code>文件夹并且不会在主页和任何分类、标签下被列出来。</p>
+<p>如果你的文章都想默认作为草稿发布（避免在文章完成前不小心发布）你可以在<code>DEFAULT_METADATA</code>添加：</p>
+<div class="highlight"><pre><span></span><span class="err">DEFAULT_METADATA = {</span>
+<span class="err">    &#39;status&#39;: &#39;draft&#39;,</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>发布一篇默认状态时<code>draft</code>的文章，可以在文章的元数据中更新<code>Status: published</code>。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
